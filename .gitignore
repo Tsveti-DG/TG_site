@@ -18,7 +18,7 @@ db.sqlite3.backup
 media/
 
 # Ignore documents stored in static (PDF, DOCX, etc.)
-static/core/documents/
+core/static/core/documents/
 
 # Allow images, CSS, JS inside static
 !static/core/images/
