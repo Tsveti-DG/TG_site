@@ -1,0 +1,125 @@
+/* Основни стилове */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+    background: #006400; /* тъмно зелено */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+/* .site-header .logo {
+    height: 160px;
+    /* vertical-align: middle; */
+/* } */ 
+
+/* Top bar */
+.top-bar {
+    background: #004d00; /* малко по-тъмно зелено */
+    color: white;
+    font-size: 14px;
+    padding: 5px 0;
+}
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-bar .contact-info span {
+    margin-right: 15px;
+}
+.top-bar .social-links img {
+    height: 20px;
+    width: 20px;
+    filter: brightness(0) invert(1); /* прави иконката бяла */
+}
+
+/* Header main */
+.header-main {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-align: left;
+}
+.header-main .logo {
+    height: 100px;
+    margin-right: 20px;
+}
+.header-main h1 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+
+
+/* Навигация */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #800000; /* бордо */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.main-nav li {
+    margin: 0;
+}
+.main-nav a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+.main-nav a:hover {
+    background: #a52a2a; /* по-светло бордо */
+}
+
+/* Content */
+.site-content {
+    padding: 20px 0;
+}
+
+/* News grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+.news-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+}
+.gallery-grid img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* Footer */
+.site-footer {
+    background: #006400;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}

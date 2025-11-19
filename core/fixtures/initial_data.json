@@ -1,0 +1,61 @@
+[
+  {
+    "model": "core.news",
+    "pk": 1,
+    "fields": {
+      "title": "Започва новата учебна година",
+      "excerpt": "На 15 септември ще открием учебната година с тържество в двора на гимназията.",
+      "content": "На 15 септември от 9:00 часа ще открием новата учебна година. Каним всички ученици, родители и гости да се присъединят към тържеството.",
+      "date": "2024-09-15",
+      "slug": "zapochva-novata-uchebna-godina"
+    }
+  },
+  {
+    "model": "core.news",
+    "pk": 2,
+    "fields": {
+      "title": "Участие в проект по програма Еразъм+",
+      "excerpt": "Ученици от Търговската гимназия ще пътуват до Испания по програма Еразъм+.",
+      "content": "Група от 12 ученици и 2 учители ще посетят партньорско училище в Испания, където ще участват в обучения и културни дейности.",
+      "date": "2024-10-01",
+      "slug": "proekt-erazum-ispania"
+    }
+  },
+  {
+    "model": "core.documentcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Нормативни документи",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.document",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "title": "Правилник за дейността",
+      "file": "documents/sample_doc_1.txt",
+      "published": "2024-09-01"
+    }
+  },
+  {
+    "model": "core.galleryimage",
+    "pk": 1,
+    "fields": {
+      "title": "Сграда на училището",
+      "image": "gallery/gallery_1.png",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.contactinfo",
+    "pk": 1,
+    "fields": {
+      "phone": "0659 9 23 18",
+      "email": "info-1500219@edu.mon.bg",
+      "address": "ул. “Тома Петков” № 27, 5980 Червен бряг",
+      "map_embed": "<iframe src='https://www.google.com/maps?q=Cherven+bryag&output=embed'></iframe>"
+    }
+  }
+]

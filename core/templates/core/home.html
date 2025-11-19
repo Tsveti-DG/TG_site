@@ -1,0 +1,95 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block sliderlink %}
+    <link rel="stylesheet" href="{% static 'core/css/slider.css' %}">
+    <script src="{% static 'core/js/slider.js' %}" defer></script>
+{% endblock %}    
+
+{% block slider %}
+<div class="slider">
+    <img src="{% static 'core/images/banner1.jpg' %}" class="slide active" alt="Банер 1">
+    <img src="{% static 'core/images/banner2.jpg' %}" class="slide" alt="Банер 2">
+    <img src="{% static 'core/images/banner3.jpg' %}" class="slide" alt="Банер 3">
+
+    <!-- Стрелки -->
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+
+    <!-- Точки -->
+    <div class="dots"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Добре дошли в Търговска гимназия „Васил Априлов“</h1>
+    <p>Училище с традиции и поглед към бъдещето! Тук знанията се превръщат в умения, а мечтите – в постижения. Вярваме, че образованието е най-сигурният път към успеха и заедно изграждаме личности, готови да посрещнат предизвикателствата на новото време.</p>
+    <p>Изберете Търговска гимназия "Васил Априлов" – вашият шанс за европейско образование!</p>
+    <h3 class="center">ТГ = ТРАДИЦИИ И ГОРДОСТ</h3>
+    <!-- <p><strong>ТГ = ТРАДИЦИИ И ГОРДОСТ</strong></p> -->
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Актуални новини</h2>
+    <div class="news-grid">
+        {% for n in news %}
+        <div class="news-card">
+            <h3><a href="{% url 'core:news_detail' n.slug %}">{{ n.title }}</a></h3>
+            <p>{{ n.excerpt }}</p>
+            <small>{{ n.date }}</small>
+        </div>
+        {% empty %}
+        <p>Все още няма новини.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Документи</h2>
+    {% for cat in doc_cats %}
+    <h3>{{ cat.name }}</h3>
+    <ul>
+        {% for doc in cat.docs.all %}
+        <li><a href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a></li>
+        {% empty %}
+        <li>Няма документи в тази категория.</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h2>Галерия</h2>
+    <div class="gallery-grid">
+        {% for g in gallery %}
+        <img src="{{ g.image.url }}" alt="{{ g.title }}">
+        {% empty %}
+        <p>Все още няма качени снимки.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Контакти</h2>
+    {% if contact %}
+    <p><strong>Телефон:</strong> {{ contact.phone }}</p>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+    <p><strong>Адрес:</strong> {{ contact.address }}</p>
+    <div class="map">
+        {{ contact.map_embed|safe }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% endcomment %}
+

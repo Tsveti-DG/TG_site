@@ -1,0 +1,52 @@
+{% comment %}
+
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Документи</h1>
+
+    {% for super in supercategories %}
+        <h2>{{ super.name }}</h2>
+        
+        {% for category in super.documentcategory_set.all %}
+            <h3>{{ category.name }}</h3>
+            
+            {% if category.document_set.all %}
+                <ul>
+                    {% for doc in category.document_set.all %}
+                        <li>
+                            <a href="{{ doc.file.url }}" target="_blank">
+                                {{ doc.title }}
+                            </a>
+                            {% if doc.description %}
+                                <small>– {{ doc.description }}</small>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p><em>Няма документи в тази категория.</em></p>
+            {% endif %}
+        {% endfor %}
+    {% empty %}
+        <p>Няма добавени суперкатегории.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Документи</h1>
+    <p>Всички училищни документи може да откриете в съответните категории.</p>
+</div>
+{% endblock %}
+
+{% endcomment %}

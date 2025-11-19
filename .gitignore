@@ -1,0 +1,50 @@
+# ---- Django ----
+*.log
+*.pot
+*.pyc
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite database
+db.sqlite3
+db.sqlite3.backup
+
+# Django migration pyc cache
+**/migrations/__pycache__/
+
+# Ignore all uploaded and generated media
+media/
+
+# Ignore documents stored in static (PDF, DOCX, etc.)
+static/core/documents/
+
+# Allow images, CSS, JS inside static
+!static/core/images/
+!static/core/css/
+!static/core/js/
+
+# ---- Virtual environment ----
+venv/
+ENV/
+.venv/
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.iml
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Python ----
+dist/
+build/
+*.egg-info/
+
+# ---- Env files ----
+.env
+*.env
+.env.*

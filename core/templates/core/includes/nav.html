@@ -1,0 +1,60 @@
+<nav class="main-nav">
+    <ul>
+        <li><a href="{% url 'core:home' %}">Начало</a></li>
+        <li>
+            <a href="{% url 'core:about_history' %}">За нас</a>
+            <ul class="dropdown">
+                <li><a href="{% url 'core:about_history' %}">История</a></li>
+                <li><a href="{% url 'core:about_base' %}">Материална база</a></li>
+                <li><a href="{% url 'core:about_mission' %}">Мисия и визия</a></li>
+                <li><a href="{% url 'core:about_team' %}">Екип</a></li>
+                <li><a href="{% url 'core:about_council' %}">Обществен съвет</a></li>
+                <li><a href="{% url 'core:about_profile' %}">Профил на купувача</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="{% url 'core:documents' %}">Документи</a>
+            <ul class="dropdown">
+                {% for super in menu_supercategories %}
+                    <li><a href="{% url 'core:documents_by_super' super.slug %}">{{ super.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+
+
+        <li><a href="{% url 'core:admission' %}">Прием</a></li>
+        <li><a href="{% url 'core:education' %}">Обучение</a></li>
+
+        <li>
+            <a href="{% url 'core:students' %}">За учениците</a>
+            <ul class="dropdown">
+                <li><a href="{% url 'core:students_schedule' %}">Седмично разписание</a></li>
+                <li><a href="{% url 'core:students_graphics' %}">Графици</a></li>
+                <li><a href="{% url 'core:students_nvo' %}">НВО</a></li>
+                <li><a href="{% url 'core:students_dzi' %}">ДЗИ и ДИЗПК</a></li>
+                <li><a href="{% url 'core:students_scholarships' %}">Стипендии</a></li>
+                <li><a href="{% url 'core:students_diary' %}">Електронен дневник</a></li>
+            </ul>
+        </li>
+
+        <li><a href="{% url 'core:projects' %}">Проекти и програми</a></li>
+        <li><a href="{% url 'core:news' %}">Новини</a></li>
+        <li><a href="{% url 'core:gallery' %}">Галерия</a></li>
+        <li><a href="{% url 'core:contacts' %}">Контакти</a></li>
+    </ul>
+</nav>
+
+<!-- 
+        <li>
+            <a href="{% url 'core:documents' %}">Документи</a>
+            <ul class="dropdown">
+                <li><a href="{% url 'core:documents_strategy' %}">Стратегия на училището</a></li>
+                <li><a href="{% url 'core:documents_rules' %}">Правилници</a></li>
+                <li><a href="{% url 'core:documents_programs' %}">Програми и планове</a></li>
+                <li><a href="{% url 'core:documents_services' %}">Услуги и документи</a></li>
+                <li><a href="{% url 'core:documents_bdp' %}">Бюджет</a></li>
+                <li><a href="{% url 'core:documents_charter' %}">Харта на клиента</a></li>  
+            </ul>
+        </li> 
+-->

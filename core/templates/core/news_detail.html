@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <article class="news-detail">
+        <h2>{{ post.title }}</h2>
+        <small>{{ post.date }}</small>
+        <p>{{ post.content }}</p>
+        <a href="{% url 'core:home' %}">← Обратно към новини</a>
+    </article>
+</div>
+{% endblock %}

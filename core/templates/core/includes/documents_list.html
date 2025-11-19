@@ -1,0 +1,31 @@
+{% if documents %}
+    <ul>
+        {% for doc in documents %}
+        <li>
+            <a href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a>
+            {% if doc.description %}
+            <small> – {{ doc.description }}</small>
+            {% endif %}
+            <small> / {{ doc.uploaded_at }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p><em>Няма документи в тази категория.</em></p>
+{% endif %}
+
+
+{% comment %}
+<ul class="document-list">
+    {% for doc in documents %}
+        <li>
+            <a href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a>
+            {% if doc.upload_date %}
+                <span class="doc-date">({{ doc.upload_date|date:"d.m.Y" }})</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Няма добавени документи.</li>
+    {% endfor %}
+</ul>
+{% endcomment %}

@@ -1,0 +1,235 @@
+/* =========================
+   Root Colors
+   ========================= */
+:root {
+    --green: #006400;           /* header и footer background */
+    --burgundy: #800000;        /* основно бордо */
+    --dark-burgundy: #4d0000;   /* hover за навигация */
+    --light: #fdfce7;           /* светъл текст за header */
+    --text-dark: #222;          /* тъмен текст */
+    --bg-light: #f9f9f9;        /* фон на тялото */
+}
+
+/* =========================
+   Base styles
+   ========================= */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+}
+
+/* =========================
+   Containers
+   ========================= */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   Top Bar
+   ========================= */
+.top-bar {
+    background: #222;
+    color: white;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar .contact-info span {
+    margin-right: 15px;
+}
+
+.top-bar .social-links img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+/* =========================
+   Header
+   ========================= */
+.site-header {
+    background: var(--green);
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.header-main .logo {
+    height: 150px;
+    margin: 15px 30px 15px 0;
+}
+
+.header-main h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--light);
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   Navigation
+   ========================= */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--burgundy);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-nav li { position: relative; }
+
+.main-nav a {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.main-nav > ul > li > a:hover {
+    background: var(--dark-burgundy);
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Dropdown */
+.main-nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    z-index: 1000;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-nav ul li:hover > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav .dropdown li a {
+    font-weight: 600;
+    padding: 10px 15px;
+    display: block;
+    text-transform: none;
+    color: white;
+    white-space: nowrap;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+.main-nav .dropdown li a:hover {
+    background: linear-gradient(90deg, var(--dark-burgundy), #330000);
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   Content Area
+   ========================= */
+.site-content {
+    flex: 1;
+    padding: 40px 20px;
+    background: #f0f0f0;
+}
+
+.site-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content h5,
+.site-content h6 {
+    color: var(--burgundy);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 1024px) {
+    .site-content {
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-content {
+        padding: 20px 10px;
+    }
+
+    .site-content .container {
+        padding: 20px;
+    }
+
+    .header-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-main .logo {
+        margin: 0 0 10px 0;
+        height: 120px;
+    }
+}

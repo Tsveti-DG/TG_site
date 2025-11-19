@@ -1,0 +1,8 @@
+[
+  {"model": "core.supercategory", "pk": 1, "fields": {"name": "Стратегия на училището", "slug": "strategiya-na-uchilishteto"}},
+  {"model": "core.supercategory", "pk": 2, "fields": {"name": "Правилници", "slug": "pravilnitsi"}},
+  {"model": "core.supercategory", "pk": 3, "fields": {"name": "Програми и планове", "slug": "programi-i-planove"}},
+  {"model": "core.supercategory", "pk": 4, "fields": {"name": "Услуги и документи", "slug": "uslugi-i-dokumenti"}},
+  {"model": "core.supercategory", "pk": 5, "fields": {"name": "Бюджет", "slug": "byudzhet"}},
+  {"model": "core.supercategory", "pk": 6, "fields": {"name": "Харта на клиента", "slug": "harta-na-klienta"}}
+]
