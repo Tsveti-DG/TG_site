@@ -1,5 +1,40 @@
 from django.contrib import admin
-from .models import SuperCategory, DocumentCategory, Document
+from .models import SuperCategory, DocumentCategory, Document, News, NewsImage, GalleryAlbum, GalleryImage, Newspaper
+
+
+@admin.register(Newspaper)
+class NewspaperAdmin(admin.ModelAdmin):
+    list_display = ('issue_number', 'title', 'published_at')
+    list_filter = ('published_at',)
+    ordering = ('-issue_number', '-published_at')
+
+
+class GalleryImageInline(admin.TabularInline):
+    model = GalleryImage
+    extra = 1
+
+
+@admin.register(GalleryAlbum)
+class GalleryAlbumAdmin(admin.ModelAdmin):
+    list_display = ("title", "order", "related_news")
+    list_editable = ("order",)
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = [GalleryImageInline]
+
+
+class NewsImageInline(admin.TabularInline):
+    model = NewsImage
+    extra = 3  # броят празни полета по подразбиране
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'slug')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title', 'content')
+    ordering = ('-created_at',)
+    inlines = [NewsImageInline]
+    fields = ('title', 'slug', 'content', 'image', 'youtube_id')
 
 
 @admin.register(SuperCategory)

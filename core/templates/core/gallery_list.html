@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+
+    <h1>Галерия</h1>
+
+    <div class="gallery-album-grid">
+        {% for album in albums %}
+        <div class="gallery-album-card">
+
+            <a href="{% url 'core:gallery_detail' album.slug %}">
+                {% if album.cover_image %}
+                    <img src="{{ album.cover_image.url }}" alt="{{ album.title }}">
+                {% else %}
+                    <img src="{% static 'core/images/default_gallery_cover.jpg' %}" alt="{{ album.title }}">
+                {% endif %}
+            </a>
+
+            <h2>
+                <a href="{% url 'core:gallery_detail' album.slug %}">
+                    {{ album.title }}
+                </a>
+            </h2>
+
+            {% if album.related_news %}
+                <p class="gallery-related-news">
+                    Свързано с:  
+                    <a href="{{ album.related_news.get_absolute_url }}">
+                        {{ album.related_news.title }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

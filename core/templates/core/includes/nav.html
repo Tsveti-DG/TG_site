@@ -39,8 +39,15 @@
         </li>
 
         <li><a href="{% url 'core:projects' %}">Проекти и програми</a></li>
-        <li><a href="{% url 'core:news' %}">Новини</a></li>
-        <li><a href="{% url 'core:gallery' %}">Галерия</a></li>
+        <li>
+            <a href="{% url 'core:news_list' %}">Новини</a>
+            <ul class="dropdown">
+                <li><a href="{% url 'core:news_list' %}">Актуални новини</a></li>
+                <li><a href="{% url 'core:newspaper' %}">Училищен вестник</a></li>
+                <li><a href="{% url 'core:creativity' %}">Творчество</a></li>
+            </ul>
+        </li>
+        <li><a href="{% url 'core:gallery_list' %}">Галерия</a></li>
         <li><a href="{% url 'core:contacts' %}">Контакти</a></li>
     </ul>
 </nav>

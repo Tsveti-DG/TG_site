@@ -50,10 +50,18 @@ urlpatterns = [
     path("projects/", views.projects, name="projects"),
 
     # Новини
-    path("news/", views.news, name="news"),
+    #     path("news/", views.news, name="news"),
+    path('news/', views.news_list, name='news_list'),
+
+    path('news/newspaper/', views.newspaper, name='newspaper'),
+    path('news/creativity/', views.creativity, name='creativity'),
+    path('news/<slug:slug>/', views.news_detail, name='news_detail'),
 
     # Галерия
-    path("gallery/", views.gallery, name="gallery"),
+    #     path("gallery/", views.gallery, name="gallery"),
+    path('gallery/', views.gallery_list, name='gallery_list'),
+    path('gallery/<slug:slug>/', views.gallery_detail, name='gallery_detail'),
+
 
     # Контакти
     path("contacts/", views.contacts, name="contacts"),

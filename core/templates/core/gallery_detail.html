@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+
+    <h1>{{ album.title }}</h1>
+
+    {% if related_news %}
+        <div class="album-related-news">
+            <strong>Свързано с новина:</strong>
+            <a href="{{ related_news.get_absolute_url }}">
+                {{ related_news.title }}
+            </a>
+        </div>
+    {% endif %}
+
+    {% if album.description %}
+        <p class="gallery-description">{{ album.description }}</p>
+    {% endif %}
+
+    <!-- FULLSCREEN GALLERY WITH GLIGHTBOX -->
+    <div class="gallery-image-grid">
+        {% for img in images %}
+        <a href="{{ img.image.url }}"
+           class="glightbox"
+           data-gallery="album-{{ album.id }}"
+           data-title="{{ img.caption|default:'' }}">
+
+            <img src="{{ img.image.url }}"
+                 alt="{{ img.caption }}"
+                 class="gallery-thumb">
+        </a>
+        {% endfor %}
+    </div>
+
+    <p class="back-to-gallery">
+        <a class="read-more" href="{% url 'core:gallery_list' %}">
+            ← Обратно към галерията
+        </a>
+    </p>
+
+</div>
+{% endblock %}

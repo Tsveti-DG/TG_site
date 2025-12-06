@@ -3,7 +3,55 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-from .models import SuperCategory, DocumentCategory, Document
+from django.core.paginator import Paginator
+from .models import SuperCategory, DocumentCategory, Document, News, GalleryAlbum, Newspaper
+
+
+def gallery_list(request):
+    albums = GalleryAlbum.objects.all()
+    return render(request, 'core/gallery_list.html', {'albums': albums})
+
+
+def gallery_detail(request, slug):
+    album = get_object_or_404(GalleryAlbum, slug=slug)
+    images = album.images.all()
+    related_news = album.related_news
+
+    return render(request, 'core/gallery_detail.html', {
+        'album': album,
+        'images': images,
+        'related_news': related_news
+    })
+
+
+def newspaper(request):
+    issues = Newspaper.objects.all()
+    return render(request, "core/newspaper.html", {"issues": issues})
+
+
+def creativity(request):
+    return render(request, 'core/creativity.html')
+
+
+def news_list(request):
+    news = News.objects.all()
+    paginator = Paginator(news, 5)  # 5 новини на страница
+    page = request.GET.get('page')
+    news_page = paginator.get_page(page)
+
+    return render(request, 'core/news_list.html', {'news_page': news_page})
+
+
+def news_detail(request, slug):
+    article = get_object_or_404(News, slug=slug)
+
+    # Албуми, свързани с тази новина
+    related_albums = GalleryAlbum.objects.filter(related_news=article)
+
+    return render(request, "core/news_detail.html", {
+        "article": article,
+        "related_albums": related_albums,
+    })
 
 
 def documents_overview(request):
@@ -61,11 +109,13 @@ def documents_by_supercategory(request, supercategory_slug):
 
 # Основна страница
 def home(request):
-    return render(request, "core/home.html")
+    latest_news = News.objects.order_by('-created_at')[:3]
+    return render(request, 'core/home.html', {
+        'latest_news': latest_news,
+    })
+
 
 # За нас
-
-
 def about(request):
     return render(request, "core/about.html")
 
@@ -169,38 +219,9 @@ def students_diary(request):
 def projects(request):
     return render(request, "core/projects.html")
 
-# Новини
-
-
-def news(request):
-    return render(request, "core/news.html")
-
-# Галерия
-
-
-def gallery(request):
-    return render(request, "core/gallery.html")
 
 # Контакти
 
 
 def contacts(request):
     return render(request, "core/contacts.html")
-
-
-# def home(request):
-#     news = News.objects.order_by('-date')[:6]
-#     doc_cats = DocumentCategory.objects.order_by('order')
-#     gallery = GalleryImage.objects.order_by('order')[:8]
-#     contact = ContactInfo.objects.first()
-#     return render(request, 'core/home.html', {
-#         'news': news,
-#         'doc_cats': doc_cats,
-#         'gallery': gallery,
-#         'contact': contact
-#     })
-
-
-# def news_detail(request, slug):
-#     post = get_object_or_404(News, slug=slug)
-#     return render(request, 'core/news_detail.html', {'post': post})

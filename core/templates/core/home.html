@@ -9,7 +9,7 @@
 {% block slider %}
 <div class="slider">
     <img src="{% static 'core/images/banner1.jpg' %}" class="slide active" alt="Банер 1">
-    <img src="{% static 'core/images/banner2.jpg' %}" class="slide" alt="Банер 2">
+    <img src="{% static 'core/images/banner2.png' %}" class="slide" alt="Банер 2">
     <img src="{% static 'core/images/banner3.jpg' %}" class="slide" alt="Банер 3">
 
     <!-- Стрелки -->
@@ -24,10 +24,45 @@
 {% block content %}
 <div class="page-container">
     <h1>Добре дошли в Търговска гимназия „Васил Априлов“</h1>
+    <h3 class="center">ТГ = ТРАДИЦИИ И ГОРДОСТ</h3>
     <p>Училище с традиции и поглед към бъдещето! Тук знанията се превръщат в умения, а мечтите – в постижения. Вярваме, че образованието е най-сигурният път към успеха и заедно изграждаме личности, готови да посрещнат предизвикателствата на новото време.</p>
     <p>Изберете Търговска гимназия "Васил Априлов" – вашият шанс за европейско образование!</p>
-    <h3 class="center">ТГ = ТРАДИЦИИ И ГОРДОСТ</h3>
     <!-- <p><strong>ТГ = ТРАДИЦИИ И ГОРДОСТ</strong></p> -->
+
+    <h2 class="homepage-news-heading">Последни новини</h2>
+
+    <div class="homepage-news-grid">
+        {% for item in latest_news %}
+            <div class="homepage-news-card">
+
+                <a href="{{ item.get_absolute_url }}">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    {% else %}
+                        <img src="{% static 'core/images/default_news_pic.jpg' %}" alt="Новина">
+                    {% endif %}
+                </a>
+
+                <div class="homepage-news-content">
+                    <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+
+                    <p class="homepage-news-date">
+                        {{ item.created_at|date:"d.m.Y" }}
+                    </p>
+
+                    <p class="homepage-news-excerpt">
+                        {{ item.content|truncatechars:120 }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p class="homepage-news-more">
+        <a href="{% url 'core:news_list' %}">
+            Виж всички новини →
+        </a>
+    </p>
 </div>
 {% endblock %}
 
