@@ -42,6 +42,23 @@
             zoomable: true,
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imgs = document.querySelectorAll(".rich-gallery img");
+
+            imgs.forEach((img, index) => {
+                const delay = index * 120; // stagger: всяка следваща е +120ms
+
+                if (img.complete) {
+                    setTimeout(() => img.classList.add("loaded"), delay);
+                } else {
+                    img.addEventListener("load", () => {
+                        setTimeout(() => img.classList.add("loaded"), delay);
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

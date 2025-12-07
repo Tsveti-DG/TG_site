@@ -99,6 +99,66 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     width: 100%;
 }
 
+/* ---------- RICH PAGE GALLERY GRID ---------- */
+
+.rich-gallery {
+    display: grid;
+    gap: 14px;
+    margin: 25px 0;
+    grid-template-columns: repeat(4, 1fr); /* Desktop */
+}
+
+/* Hover zoom – добавяме обратно */
+.rich-gallery a:hover img {
+    transform: scale(1.05   );
+    transition: transform 0.25s ease;
+}
+
+@media (max-width: 1024px) {
+    .rich-gallery {
+        grid-template-columns: repeat(2, 1fr); /* Tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .rich-gallery {
+        grid-template-columns: repeat(1, 1fr); /* Mobile */
+    }
+}
+
+/* FIGURE WRAPPER */
+.rich-gallery figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* IMAGE STYLE (обединен блок — няма да има втори като преди!) */
+.rich-gallery img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+
+    /* Fade-in effect start state */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* FINAL STATE — задава се чрез JS */
+.rich-gallery img.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FIGCAPTION */
+.rich-gallery figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
 
 /* =========================
    Top bar
