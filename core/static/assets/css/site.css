@@ -1,0 +1,1085 @@
+/* =========================
+   Base styles
+   ========================= */
+
+:root {
+    --green: #006400;
+    --burgundy: #881912;
+    --light-burgundy: #a30000;
+    --dark-burgundy: #4d0000;
+    --light: #fdfce7;
+    --dark-grey: #222;
+    
+    /* --burgundy: rgb(136, 25, 18); */
+    /* --burgundy: #831518; */
+    /* --burgundy: rgb(131, 21, 24); */
+    /* --burgundy: #800000; */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;    
+    /* background: var(--light); */
+    background: #f9f9f9;
+    color: var(--dark-grey);
+    /* color: #333; */
+}
+
+.center {
+    text-align: center;
+}
+
+/* Main content grows to fill available space */
+.site-content {
+    flex: 1;
+    /* margin: 10px 120px; */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   Headings
+   ========================= */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    margin-top: 0;
+    color: var(--dark-grey);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* lighter shadow */  
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 26px; margin-bottom: 10px; }
+/* h3 { font-size: 20px; } */
+
+.page-container h3 {
+    text-transform: uppercase;
+}
+
+.page-container ul li a {
+    position: relative;
+    color: var(--burgundy);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+/* underline с фиксиран бордо цвят */
+.page-container ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* леко под текста */
+    width: 0;
+    height: 1px;
+    background-color: var(--burgundy); /* винаги бордо */
+    transition: width 0.4s ease;
+}
+
+/* при hover сменяме цвета на текста */
+.page-container ul li a:hover {
+    color: inherit; /* взима основния текстов цвят */
+}
+
+.page-container ul li a:hover::after {
+    width: 100%;
+}
+
+/* ---------- RICH PAGE GALLERY GRID ---------- */
+
+.rich-gallery {
+    display: grid;
+    gap: 14px;
+    margin: 25px 0;
+    grid-template-columns: repeat(4, 1fr); /* Desktop */
+}
+
+/* Hover zoom – добавяме обратно */
+.rich-gallery a:hover img {
+    transform: scale(1.05   );
+    transition: transform 0.25s ease;
+}
+
+@media (max-width: 1024px) {
+    .rich-gallery {
+        grid-template-columns: repeat(2, 1fr); /* Tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .rich-gallery {
+        grid-template-columns: repeat(1, 1fr); /* Mobile */
+    }
+}
+
+/* FIGURE WRAPPER */
+.rich-gallery figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* IMAGE STYLE (обединен блок — няма да има втори като преди!) */
+.rich-gallery img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+
+    /* Fade-in effect start state */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* FINAL STATE — задава се чрез JS */
+.rich-gallery img.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FIGCAPTION */
+.rich-gallery figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+/* =========================
+   Top bar
+   ========================= */
+.top-bar {
+    background: #222;
+    color: white;
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CONTACT SECTION — phone + email */
+.topbar-contact {
+    display: flex;
+    align-items: center;
+    gap: 24px;  /* ← увеличава разстоянието между телефон и имейл */
+}
+
+/* SOCIAL ICONS SECTION — Facebook + YouTube */
+.topbar-social {
+    display: flex;
+    align-items: center;
+    gap: 18px;  /* ← разстояние между социалните икони */
+}
+
+/* ICON LINK (shared for both sides) */
+.topbar-icon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.topbar-icon-link img {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Hover effects */
+.topbar-icon-link:hover img {
+    transform: scale(1.18);
+    filter: brightness(1.4);
+}
+
+.topbar-icon-link:hover span {
+    color: #b32020;
+}
+
+/* ------- TOPBAR BEAUTIFUL ICONS ------- */
+
+.topbar-icon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.topbar-icon-link img {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* нормално – бордо */
+.topbar-icon-link img {
+    filter: none;
+}
+
+/* при hover – уголемяване + по-светло бордо */
+.topbar-icon-link:hover img {
+    transform: scale(1.15);
+    filter: brightness(1.25);
+}
+
+/* Анимация и за текста */
+.topbar-icon-link:hover span {
+    color: #b32020;
+}
+
+
+
+/* =========================
+   Header main
+   ========================= */
+.site-header {
+    background: var(--green);
+    /* color: white; */
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.header-main .logo {
+    height: 150px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 30px;
+}
+
+.header-main h1 {
+    font-size: 36px;
+    margin: 0;
+    color: white;
+    /* color: var(--light); */
+    /* text-transform: uppercase; */
+    line-height: 1.2;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   Navigation
+   ========================= */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--burgundy);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-nav li { margin: 0; }
+
+.main-nav a {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease; /* smooth transition */
+}
+
+/* Main navigation hover with rounded corners and subtle shadow */
+.main-nav > ul > li > a:hover {
+    background: var(--dark-burgundy);
+    transition: background 0.4s ease, box-shadow 0.4s ease, border-radius 0.4s ease;
+    border-radius: 4px; /* slightly rounded corners */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle shadow */
+}
+
+/* Main tabs */
+.main-nav > ul > li > a {
+    font-weight: 900; /* heaviest font */
+}
+
+/* Positioning for dropdown */
+.main-nav ul li {
+    position: relative;
+}
+
+/* Dropdown menu */
+.main-nav .dropdown {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    z-index: 1000;
+    border-radius: 2px;
+
+    /* hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px); /* start slightly higher */
+    transition: opacity 1.1s ease, transform 0.9s ease; /* smooth fade and slide */
+}
+
+/* Show dropdown on hover */
+.main-nav ul li:hover > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* slide into place */
+}
+
+/* Dropdown items */
+.main-nav .dropdown li {
+    width: 100%; /* full width */
+}
+
+.main-nav .dropdown li a {
+    font-weight: 600; /* lighter font */
+    padding: 10px 15px;
+    display: block; /* full row clickable */
+    text-transform: none;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease; /* smooth transition */
+}
+
+/* Dropdown items hover with gradient, rounded corners, and subtle shadow */
+.main-nav .dropdown li a:hover {
+    background: linear-gradient(90deg, var(--dark-burgundy), #330000); /* gradient */
+    border-radius: 7px; /* rounded corners */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle shadow */
+    transition: background 0.4s ease, box-shadow 0.4s ease, border-radius 0.4s ease;
+}
+
+/* =========================
+   Content
+   ========================= */
+/* .site-content {
+    padding: 20px;
+} */
+
+.site-content {
+    flex: 1;
+    padding: 40px 150px;
+    background: #f0f0f0; /* леко сив фон зад карето */
+}
+
+.site-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white; /* самото съдържание е в бяло каре */
+    padding: 60px;     /* вътрешен отстъп */
+    border-radius: 10px; /* заоблени ъгли */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* мека сянка */
+}
+
+
+/* .site-content {
+    flex: 1;
+    padding: 40px 20px; /* вътрешен отстъп */
+    /* background: #f9f9f9; фон за цялото съдържание */
+/* } */
+
+/* .site-content .container {
+    max-width: 1200px;   /* ограничаваме широчината */
+    /* margin: 0 auto;      центрираме по хоризонтала */
+/* }  */
+
+@media (max-width: 1024px) {
+  .site-content {
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-content {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-content .container {
+    padding: 20px;
+  }
+}
+
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content h5,
+.site-content h6 {
+    color: var(--burgundy);        /* бордо */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* лека сянка за четимост */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* .news-link {
+    color: var(--burgundy);
+    text-decoration: none;
+}
+
+.news-link:hover {
+    color: #a00000;
+    text-decoration: underline;
+} */
+
+/* ----------- NEWS LIST STYLES ----------- */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.news-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.news-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 15px 20px;
+}
+
+.news-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.news-title a {
+    color: var(--burgundy); /* бордо */
+    text-decoration: none;
+}
+
+.news-title a:hover {
+    text-decoration: underline;
+    color: var(--light-burgundy);
+}
+
+.news-date {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.news-excerpt {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.read-more {
+    color: var(--burgundy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+    color: #a00000;
+}
+
+/* Pagination */
+.pagination {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.pagination a {
+    padding: 8px 14px;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    margin: 0 5px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background: var(--burgundy);
+    color: white;
+}
+
+.pagination span {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+
+/* ----------- NEWS DETAIL STYLES ----------- */
+
+.news-detail-img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.news-detail-content {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    margin: 20px 0 30px 0;
+}
+
+.back-to-news {
+    margin-top: 30px;
+}
+
+.back-to-news a {
+    font-size: 18px;
+}
+
+
+.news-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.news-gallery-thumb {
+    width: 240px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.news-gallery-thumb:hover {
+    transform: scale(1.05);
+}
+
+.news-gallery-grid {
+    display: grid;
+    gap: 15px;
+    margin: 30px 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.news-gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.news-gallery-grid img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+
+.news-video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.news-video-thumbnail {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.news-video-wrapper:hover .news-video-thumbnail {
+    transform: scale(1.02);
+}
+
+.news-video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 20px 30px;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.news-video-wrapper:hover .news-video-play-icon {
+    background: rgba(0,0,0,0.7);
+}
+
+.related-albums-block {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.related-albums-block h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--burgundy);
+}
+
+.related-albums-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.related-albums-list li {
+    margin-bottom: 8px;
+}
+
+.related-albums-list a {
+    color: var(--burgundy);
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.related-albums-list a:hover {
+    text-decoration: underline;
+}
+
+
+.homepage-news-heading {
+    /* text-align: center; */
+    padding-top: 50px;
+    font-size: 28px;
+    color: var(--burgundy);
+}
+
+.homepage-news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.homepage-news-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.homepage-news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.homepage-news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.homepage-news-content {
+    padding: 15px 20px;
+}
+
+.homepage-news-content h3 a {
+    color: var(--burgundy);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.homepage-news-content h3 a:hover {
+    text-decoration: underline;
+}
+
+.homepage-news-date {
+    color: #777;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.homepage-news-excerpt {
+    color: #444;
+    font-size: 16px;
+}
+
+.homepage-news-more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.homepage-news-more a {
+    font-size: 18px;
+    color: var(--burgundy);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.homepage-news-more a:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------- GALLERY ALBUM GRID ----------- */
+
+.gallery-album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.gallery-album-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.gallery-album-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+.gallery-album-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.gallery-album-card h2 {
+    margin: 15px 0 10px;
+    font-size: 22px;
+}
+
+.gallery-album-card h2 a {
+    text-decoration: none;
+    color: var(--burgundy);
+}
+
+.gallery-album-card h2 a:hover {
+    text-decoration: underline;
+}
+
+.gallery-related-news {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #555;
+}
+
+.gallery-related-news a {
+    color: var(--burgundy);
+    text-decoration: none;
+}
+
+.gallery-related-news a:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------- GALLERY DETAIL GRID ----------- */
+
+.gallery-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+/* Thumbnail styling (modern, unified) */
+.gallery-thumb {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-thumb:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Album description */
+.gallery-description {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Link to related news */
+.album-related-news {
+    margin: 10px 0 20px 0;
+    padding: 10px 15px;
+    background: #f8f4f5;
+    border-left: 4px solid var(--burgundy);
+    font-size: 15px;
+}
+
+.album-related-news a {
+    color: var(--burgundy);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.album-related-news a:hover {
+    text-decoration: underline;
+}
+
+/* Back link */
+.back-to-gallery {
+    margin-top: 20px;
+}
+
+.back-to-gallery a {
+    color: var(--burgundy);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.back-to-gallery a:hover {
+    text-decoration: underline;
+}
+
+
+/* ----------- NEWSPAPER FIXED-SIZE CARDS (A4 at 250px height) ----------- */
+
+.newspaper-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* смени на center ако искаш центриране */
+}
+
+.newspaper-card {
+    width: 177px; /* Пропорционално на 250px височина */
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.newspaper-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.newspaper-cover {
+    width: 100%;
+    height: 250px; /* твоето изискване */
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    margin-bottom: 2px;
+    transition: transform 0.25s ease;
+}
+
+.newspaper-card:hover .newspaper-cover {
+    transform: scale(1.04);
+}
+
+.newspaper-issue-title {
+    font-size: 15px;
+    color: var(--burgundy);
+    margin: 4px 0 2px 0;
+    font-weight: 600;
+}
+
+.newspaper-title {
+    font-size: 13px;
+    color: #444;
+    margin: 0 0 4px 0;
+}
+
+.newspaper-date {
+    font-size: 12px;
+    color: #666;
+    margin: 2px 0;
+}
+
+
+/* -------- HEADER INLINE CENTERED WITH SLASH -------- */
+
+.newspaper-header-center {
+    display: inline-flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0px;      /* повдига реда максимално нагоре */
+    margin-bottom: 2px;   /* по-малко пространство към title */
+}
+
+/* Брой */
+.issue-number {
+    font-size: 15px;
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+/* слагаме "/" след issue-number */
+.issue-number::after {
+    content: " / ";
+    color: #666;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+/* Дата */
+.issue-date {
+    font-size: 12px;
+    color: #666;
+}
+
+
+/* ---------- CONTACTS PAGE (two-column layout) ---------- */
+
+.contacts-two-column {
+    display: flex;
+    gap: 35px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* MAP BOX */
+.contact-map-box {
+    flex: 1.2;
+    min-width: 350px;
+}
+
+.contact-map-box iframe {
+    width: 100%;
+    height: 420px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+/* INFO BOX */
+.contact-info-box {
+    flex: 1;
+    min-width: 260px;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.14);
+}
+
+/* each line in the contact info */
+.contact-info-box p {
+    margin: 12px 0;
+    font-size: 18px;
+    color: var(--burgundy);   /* ВСИЧКИ данни — бордо */
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.contact-map-box {
+    flex: 1.2;
+    min-width: 350px;
+}
+
+/* The actual data (телефон, имейл, адрес) */
+.contact-text {
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+/* icons */
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(17%) sepia(63%)
+            saturate(2464%) hue-rotate(342deg) brightness(94%) contrast(89%);
+}
+
+/* Social icons */
+.contact-social {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.contact-social img {
+    width: 34px;
+    height: 34px;
+    filter: brightness(0) saturate(100%) invert(17%) sepia(63%)
+            saturate(2464%) hue-rotate(342deg) brightness(94%) contrast(89%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-social img:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
+}
+
+.contact-label {
+    color: var(--burgundy);
+    font-weight: 700;
+}
+
+.contact-value {
+    color: #222; /* черно */
+    font-weight: 600;
+}
+
+
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    /* padding: 0; */
+    /* margin: 0; */
+    /* margin-top: 20px; */
+}

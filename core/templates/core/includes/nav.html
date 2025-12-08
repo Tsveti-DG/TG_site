@@ -14,7 +14,7 @@
         </li>
 
         <li>
-            <a href="{% url 'core:documents' %}">Документи</a>
+            <a href="{% url 'core:documents_overview' %}">Документи</a>
             <ul class="dropdown">
                 {% for super in menu_supercategories %}
                     <li><a href="{% url 'core:documents_by_super' super.slug %}">{{ super.name }}</a></li>
@@ -51,17 +51,3 @@
         <li><a href="{% url 'core:contacts' %}">Контакти</a></li>
     </ul>
 </nav>
-
-<!-- 
-        <li>
-            <a href="{% url 'core:documents' %}">Документи</a>
-            <ul class="dropdown">
-                <li><a href="{% url 'core:documents_strategy' %}">Стратегия на училището</a></li>
-                <li><a href="{% url 'core:documents_rules' %}">Правилници</a></li>
-                <li><a href="{% url 'core:documents_programs' %}">Програми и планове</a></li>
-                <li><a href="{% url 'core:documents_services' %}">Услуги и документи</a></li>
-                <li><a href="{% url 'core:documents_bdp' %}">Бюджет</a></li>
-                <li><a href="{% url 'core:documents_charter' %}">Харта на клиента</a></li>  
-            </ul>
-        </li> 
--->

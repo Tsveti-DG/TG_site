@@ -20,9 +20,3 @@ def show_documents(category):
     ).order_by('order', '-uploaded_at', 'title')
 
     return {'documents': documents}
-# @register.inclusion_tag('core/includes/documents_list.html')
-# def show_documents(category):
-#     if category:
-#         documents = Document.objects.filter(
-#             category=category).order_by('order', '-uploaded_at', 'title')
-#         return {'documents': documents}

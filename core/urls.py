@@ -7,7 +7,7 @@ urlpatterns = [
     path("", views.home, name="home"),
 
     # За нас
-    path("about/", views.about, name="about"),
+    #     path("about/", views.about, name="about"),
     path("about/base/", views.about_base, name="about_base"),
     path("about/history/", views.about_history, name="about_history"),
     path("about/mission/", views.about_mission, name="about_mission"),
@@ -16,21 +16,9 @@ urlpatterns = [
     path("about/profile/", views.about_profile, name="about_profile"),
 
     # Документи
-    path("documents/", views.documents_overview, name="documents"),
-
-    path("documents/", views.documents, name="documents"),
+    path("documents/", views.documents_overview, name="documents_overview"),
     path('documents/<slug:supercategory_slug>/',
          views.documents_by_supercategory, name='documents_by_super'),
-
-    path("documents/strategy/", views.documents_strategy,
-         name="documents_strategy"),
-    path("documents/rules/", views.documents_rules, name="documents_rules"),
-    path("documents/programs/", views.documents_programs,
-         name="documents_programs"),
-    path("documents/services/", views.documents_services,
-         name="documents_services"),
-    path("documents/bdp/", views.documents_bdp, name="documents_bdp"),
-    path("documents/charter/", views.documents_charter, name="documents_charter"),
 
     # Други
     path("admission/", views.admission, name="admission"),
@@ -62,13 +50,6 @@ urlpatterns = [
     path('gallery/', views.gallery_list, name='gallery_list'),
     path('gallery/<slug:slug>/', views.gallery_detail, name='gallery_detail'),
 
-
     # Контакти
     path("contacts/", views.contacts, name="contacts"),
 ]
-
-
-# urlpatterns = [
-#     path('', views.home, name='home'),
-#     path('news/<slug:slug>/', views.news_detail, name='news_detail'),
-# ]

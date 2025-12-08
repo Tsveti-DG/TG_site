@@ -1,0 +1,12 @@
+h1, .h1-text, .h1-text a {
+    font-family: Comfortaa;
+    font-size: 33px;
+    color: rgb(155, 47, 54);
+    font-weight: bold;
+}
+
+h2, .h2-text {
+    font-size: 27px;
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+}

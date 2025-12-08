@@ -54,22 +54,12 @@ def news_detail(request, slug):
     })
 
 
+# Документи
 def documents_overview(request):
     """ Основна страница 'Документи' — изброява всички суперкатегории """
     supercategories = SuperCategory.objects.all()
     return render(request, 'core/documents_overview.html',
                   {'supercategories': supercategories})
-
-
-# def documents_by_supercategory(request, super_slug):
-#     supercategory = get_object_or_404(SuperCategory, slug=super_slug)
-#     categories = DocumentCategory.objects.filter(
-#         supercategory=supercategory
-#     ).order_by('order', 'name')
-#     return render(request, 'core/documents_by_supercategory.html', {
-#         'supercategory': supercategory,
-#         'categories': categories,
-#     })
 
 
 def documents_by_supercategory(request, supercategory_slug):
@@ -93,31 +83,12 @@ def documents_by_supercategory(request, supercategory_slug):
     })
 
 
-# def documents_by_supercategory(request, super_slug):
-#     """ Динамична страница за всяка суперкатегория """
-#     supercategory = get_object_or_404(SuperCategory.objects.prefetch_related(
-#         'documentcategory_set__document_set'
-#     ), slug=super_slug)
-
-#     categories = supercategory.documentcategory_set.all().order_by('name')
-
-#     return render(request, 'core/documents_by_supercategory.html', {
-#         'supercategory': supercategory,
-#         'categories': categories
-#     })
-
-
 # Основна страница
 def home(request):
     latest_news = News.objects.order_by('-created_at')[:3]
     return render(request, 'core/home.html', {
         'latest_news': latest_news,
     })
-
-
-# За нас
-def about(request):
-    return render(request, "core/about.html")
 
 
 def about_base(request):
@@ -143,39 +114,8 @@ def about_council(request):
 def about_profile(request):
     return render(request, "core/about_profile.html")
 
-# Документи
-
-
-def documents(request):
-    return render(request, "core/documents.html")
-
-
-def documents_strategy(request):
-    return render(request, "core/documents_strategy.html")
-
-
-def documents_rules(request):
-    return render(request, "core/documents_rules.html")
-
-
-def documents_programs(request):
-    return render(request, "core/documents_programs.html")
-
-
-def documents_services(request):
-    return render(request, "core/documents_services.html")
-
-
-def documents_bdp(request):
-    return render(request, "core/documents_bdp.html")
-
-
-def documents_charter(request):
-    return render(request, "core/documents_charter.html")
 
 # Други
-
-
 def admission(request):
     return render(request, "core/admission.html")
 
@@ -183,9 +123,8 @@ def admission(request):
 def education(request):
     return render(request, "core/education.html")
 
+
 # За учениците
-
-
 def students(request):
     return render(request, "core/students.html")
 
@@ -213,15 +152,12 @@ def students_scholarships(request):
 def students_diary(request):
     return render(request, "core/students_diary.html")
 
+
 # Проекти и програми
-
-
 def projects(request):
     return render(request, "core/projects.html")
 
 
 # Контакти
-
-
 def contacts(request):
     return render(request, "core/contacts.html")

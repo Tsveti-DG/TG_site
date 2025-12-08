@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block sliderlink %}
-    <link rel="stylesheet" href="{% static 'core/css/slider.css' %}">
-    <script src="{% static 'core/js/slider.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'assets/css/slider.css' %}">
+    <script src="{% static 'assets/js/slider.js' %}" defer></script>
 {% endblock %}    
 
 {% block slider %}
 <div class="slider">
-    <img src="{% static 'core/images/banner1.jpg' %}" class="slide active" alt="Банер 1">
-    <img src="{% static 'core/images/banner2.png' %}" class="slide" alt="Банер 2">
-    <img src="{% static 'core/images/banner3.jpg' %}" class="slide" alt="Банер 3">
+    <img src="{% static 'assets/images/banner1.jpg' %}" class="slide active" alt="Банер 1">
+    <img src="{% static 'assets/images/banner2.png' %}" class="slide" alt="Банер 2">
+    <img src="{% static 'assets/images/banner3.jpg' %}" class="slide" alt="Банер 3">
 
     <!-- Стрелки -->
     <a class="prev">&#10094;</a>
@@ -39,7 +39,7 @@
                     {% if item.image %}
                         <img src="{{ item.image.url }}" alt="{{ item.title }}">
                     {% else %}
-                        <img src="{% static 'core/images/default_news_pic.jpg' %}" alt="Новина">
+                        <img src="{% static 'assets/images/default_news_pic.jpg' %}" alt="Новина">
                     {% endif %}
                 </a>
 
