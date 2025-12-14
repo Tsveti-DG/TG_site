@@ -2,7 +2,7 @@
     <ul>
         <li><a href="{% url 'core:home' %}">Начало</a></li>
         <li>
-            <a href="{% url 'core:about_history' %}">За нас</a>
+            <a href="{% url 'core:about' %}">За нас</a>
             <ul class="dropdown">
                 <li><a href="{% url 'core:about_history' %}">История</a></li>
                 <li><a href="{% url 'core:about_base' %}">Материална база</a></li>
@@ -14,10 +14,10 @@
         </li>
 
         <li>
-            <a href="{% url 'core:documents_overview' %}">Документи</a>
+            <a href="{% url 'documents:documents_overview' %}">Документи</a>
             <ul class="dropdown">
                 {% for super in menu_supercategories %}
-                    <li><a href="{% url 'core:documents_by_super' super.slug %}">{{ super.name }}</a></li>
+                    <li><a href="{% url 'documents:documents_by_super' super.slug %}">{{ super.name }}</a></li>
                 {% endfor %}
             </ul>
         </li>
@@ -40,14 +40,14 @@
 
         <li><a href="{% url 'core:projects' %}">Проекти и програми</a></li>
         <li>
-            <a href="{% url 'core:news_list' %}">Новини</a>
+            <a href="{% url 'news:news_list' %}">Новини</a>
             <ul class="dropdown">
-                <li><a href="{% url 'core:news_list' %}">Актуални новини</a></li>
-                <li><a href="{% url 'core:newspaper' %}">Училищен вестник</a></li>
-                <li><a href="{% url 'core:creativity' %}">Творчество</a></li>
+                <li><a href="{% url 'news:news_list' %}">Актуални новини</a></li>
+                <li><a href="{% url 'newspaper:newspaper_list' %}">Училищен вестник</a></li>
+                <li><a href="{% url 'news:creativity' %}">Творчество</a></li>
             </ul>
         </li>
-        <li><a href="{% url 'core:gallery_list' %}">Галерия</a></li>
+        <li><a href="{% url 'gallery:gallery_list' %}">Галерия</a></li>
         <li><a href="{% url 'core:contacts' %}">Контакти</a></li>
     </ul>
 </nav>

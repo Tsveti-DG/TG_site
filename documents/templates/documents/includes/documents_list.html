@@ -3,10 +3,15 @@
         {% for doc in documents %}
         <li>
             <a href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a>
+
             {% if doc.description %}
-            <small> – {{ doc.description }}</small>
+                <small> – {{ doc.description }}</small>
             {% endif %}
-            <small> / {{ doc.uploaded_at }}</small>
+
+            {% if doc.uploaded_at %}
+                <small> / {{ doc.uploaded_at }}</small>
+            {% endif %}
+            
         </li>
         {% endfor %}
     </ul>

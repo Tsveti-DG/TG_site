@@ -1,0 +1,65 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+
+    <h1>Дигитален училищен вестник</h1>
+
+    <p>
+        <strong>
+            <em>Създаден с желание, воден от вдъхновение и посветен на учениците, учителите и духа на Търговска гимназия.</em>
+            <br>
+            Добре дошли в нашия свят – свят на идеи, емоции и развитие.
+        </strong>
+    </p>
+
+    <h2 class="center">АКТИВ – “Гласът на нашето училище!”</h2>
+    <!-- <h2 class="center">“Гласът на нашето училище!”</h2> -->
+    <!-- <p class="center">“Гласът на нашето училище!”</p> -->
+
+    <div class="newspaper-grid">
+        {% for issue in issues_page %}
+        <div class="newspaper-card">
+
+            <a href="{{ issue.pdf.url }}" target="_blank">
+                <img src="{{ issue.get_cover }}"
+                     alt="Брой {{ issue.issue_number }}"
+                     class="newspaper-cover">
+            </a>
+
+            <div class="newspaper-header-center">
+                <span class="issue-number">Брой {{ issue.issue_number }}</span>
+                <span class="issue-date">{{ issue.published_at|date:"d.m.Y" }}</span>
+            </div>
+
+            {% if issue.title %}
+                <p class="newspaper-title">{{ issue.title }}</p>
+            {% endif %}
+
+        </div>
+        {% empty %}
+            <p>Все още няма публикувани броеве.</p>
+        {% endfor %}
+    </div>
+
+    {% if issues_page.has_other_pages %}
+        <nav class="pagination">
+
+            {% if issues_page.has_previous %}
+                <a href="?page={{ issues_page.previous_page_number }}">« Назад</a>
+            {% endif %}
+
+            <span>
+                Страница {{ issues_page.number }} от {{ issues_page.paginator.num_pages }}
+            </span>
+
+            {% if issues_page.has_next %}
+                <a href="?page={{ issues_page.next_page_number }}">Напред »</a>
+            {% endif %}
+
+        </nav>
+    {% endif %}
+
+</div>
+{% endblock %}

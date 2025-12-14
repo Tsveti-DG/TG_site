@@ -1,86 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-# from .models import News, DocumentCategory, GalleryImage, ContactInfo
-
-# Create your views here.
-
-from django.core.paginator import Paginator
-from .models import SuperCategory, DocumentCategory, Document, News, GalleryAlbum, Newspaper
-
-
-def gallery_list(request):
-    albums = GalleryAlbum.objects.all()
-    return render(request, 'core/gallery_list.html', {'albums': albums})
-
-
-def gallery_detail(request, slug):
-    album = get_object_or_404(GalleryAlbum, slug=slug)
-    images = album.images.all()
-    related_news = album.related_news
-
-    return render(request, 'core/gallery_detail.html', {
-        'album': album,
-        'images': images,
-        'related_news': related_news
-    })
-
-
-def newspaper(request):
-    issues = Newspaper.objects.all()
-    return render(request, "core/newspaper.html", {"issues": issues})
-
-
-def creativity(request):
-    return render(request, 'core/creativity.html')
-
-
-def news_list(request):
-    news = News.objects.all()
-    paginator = Paginator(news, 5)  # 5 новини на страница
-    page = request.GET.get('page')
-    news_page = paginator.get_page(page)
-
-    return render(request, 'core/news_list.html', {'news_page': news_page})
-
-
-def news_detail(request, slug):
-    article = get_object_or_404(News, slug=slug)
-
-    # Албуми, свързани с тази новина
-    related_albums = GalleryAlbum.objects.filter(related_news=article)
-
-    return render(request, "core/news_detail.html", {
-        "article": article,
-        "related_albums": related_albums,
-    })
-
-
-# Документи
-def documents_overview(request):
-    """ Основна страница 'Документи' — изброява всички суперкатегории """
-    supercategories = SuperCategory.objects.all()
-    return render(request, 'core/documents_overview.html',
-                  {'supercategories': supercategories})
-
-
-def documents_by_supercategory(request, supercategory_slug):
-    supercategory = get_object_or_404(SuperCategory, slug=supercategory_slug)
-    categories = DocumentCategory.objects.filter(
-        supercategory=supercategory).order_by('order', 'name')
-
-    # ако това е Архив — показваме само архивираните
-    if supercategory.name.lower() == "архив":
-        for cat in categories:
-            cat.documents = Document.objects.filter(
-                category=cat, is_archived=True)
-    else:
-        for cat in categories:
-            cat.documents = Document.objects.filter(
-                category=cat, is_archived=False)
-
-    return render(request, 'core/documents_by_supercategory.html', {
-        'supercategory': supercategory,
-        'categories': categories,
-    })
+# core/views.py
+from django.shortcuts import render
+from news.models import News
 
 
 # Основна страница
@@ -89,6 +9,11 @@ def home(request):
     return render(request, 'core/home.html', {
         'latest_news': latest_news,
     })
+
+
+# За нас
+def about(request):
+    return render(request, "core/about.html")
 
 
 def about_base(request):

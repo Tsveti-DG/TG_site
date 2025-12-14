@@ -3,6 +3,13 @@
 {% block content %}
 <div class="page-container">
     <h1>За учениците</h1>
-    <p>Тук ще сложим информация за учениците</p>
+    <ul>
+        <li><h3><a href="{% url 'core:students_schedule' %}">Седмично разписание</a></h3></li>
+        <li><h3><a href="{% url 'core:students_graphics' %}">Графици</a></h3></li>
+        <li><h3><a href="{% url 'core:students_nvo' %}">НВО</a></h3></li>
+        <li><h3><a href="{% url 'core:students_dzi' %}">ДЗИ и ДИЗПК</a></h3></li>
+        <li><h3><a href="{% url 'core:students_scholarships' %}">Стипендии</a></h3></li>
+        <li><h3><a href="{% url 'core:students_diary' %}">Електронен дневник</a></h3></li>
+    </ul>
 </div>
 {% endblock %}

@@ -25,6 +25,7 @@
            data-gallery="news-{{ article.id }}">
             <img src="{{ img.image.url }}" 
                  alt="{{ img.caption }}">
+                 <span>{{ img.caption }}</span>
         </a>
         {% endfor %}
 
@@ -58,7 +59,7 @@
             <ul class="related-albums-list">
                 {% for album in related_albums %}
                     <li>
-                        <a href="{% url 'core:gallery_detail' album.slug %}">
+                        <a href="{% url 'gallery:gallery_detail' album.slug %}">
                             {{ album.title }}
                         </a>
                     </li>
@@ -69,7 +70,7 @@
 
 
     <p class="back-to-news">
-        <a class="read-more" href="{% url 'core:news_list' %}">
+        <a class="read-more" href="{% url 'news:news_list' %}">
             ← Обратно към новините
         </a>
     </p>

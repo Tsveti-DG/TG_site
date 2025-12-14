@@ -1,10 +1,10 @@
 from django import template
-from core.models import Document
+from documents.models import Document
 
 register = template.Library()
 
 
-@register.inclusion_tag('core/includes/documents_list.html')
+@register.inclusion_tag('documents/includes/documents_list.html')
 def show_documents(category):
     if not category:
         return {'documents': []}
