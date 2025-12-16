@@ -10,6 +10,7 @@ __pycache__/
 # SQLite database
 db.sqlite3
 db.sqlite3.backup
+backups/
 
 # Django migration pyc cache
 **/migrations/__pycache__/
@@ -19,6 +20,8 @@ media/
 
 # Ignore documents stored in static (PDF, DOCX, etc.)
 core/static/core/documents/
+
+core/templates/core/about_council_old.html
 
 # Allow images, CSS, JS inside static
 !static/core/images/
