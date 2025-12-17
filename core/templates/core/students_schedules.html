@@ -1,14 +1,66 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="page-container">
     <h1>Графици</h1>
-    <p>Тук ще сложим съдържание за графиците.</p>
+
+    <h3>Първи срок</h3>
+
+    <ul>
+        <li>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/График котролни работи 1 срок 2025-26.pdf' %}">
+                График за провеждане на котролни работи
+            </a>
+        </li>
+        <li>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/График класни работи 1 срок 2025-26.pdf' %}">
+                График за провеждане на класни работи
+            </a>
+        </li>
+        <li>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/График консултации 1 срок 2025-26.pdf' %}">
+                График за провеждане на консултации
+            </a>
+        </li>
+        <li>
+            <a 
+            class="file-link content-link" target="_blank"
+            href="{% static 'assets/documents/График класен ръководител 1 срок 2025-26.pdf' %}">
+            График за провеждане часа на класния ръководител
+            </a>
+        </li>
+        <li>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/График кл. р-л втори доп. час 1 срок 2025-26.pdf' %}">
+                График за провеждане втория допълнителен час на класния ръководител
+            </a>
+        </li>
+        <li>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/График дежурство 1 срок 2025-26.pdf' %}">
+                График за дежурство на учителите
+            </a>
+        </li>
+    </ul>
+
+
+    <h3>Втори срок</h3>
+
+    <!-- <p>Тук ще сложим съдържание за графиците.</p>
     <p>Графици за изпити и мероприятия. Да се качат документи /пдф/ за: 
--консултации
-- провеждане на приравнителни изпити
--провеждане на изпити в самостоятелна форма
-- провеждане на поправителни изпити
-</p>
+    -консултации
+    - провеждане на приравнителни изпити
+    -провеждане на изпити в самостоятелна форма
+    - провеждане на поправителни изпити
+    </p> -->
 </div>
 {% endblock %}
