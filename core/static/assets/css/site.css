@@ -70,7 +70,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     text-transform: uppercase;
 }
 
-.page-container ul li a {
+.page-container a.content-link {
     position: relative;
     color: var(--burgundy);
     font-weight: 600;
@@ -79,7 +79,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 }
 
 /* underline с фиксиран бордо цвят */
-.page-container ul li a::after {
+.page-container a.content-link::after {
     content: "";
     position: absolute;
     left: 0;
@@ -91,12 +91,17 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 }
 
 /* при hover сменяме цвета на текста */
-.page-container ul li a:hover {
+.page-container a.content-link:hover {
     color: inherit; /* взима основния текстов цвят */
 }
 
-.page-container ul li a:hover::after {
+.page-container a.content-link:hover::after {
     width: 100%;
+}
+
+/* Линкове към файлове (PDF, DOC и др.) */
+.page-container a.file-link::before {
+    content: "📄 ";
 }
 
 /* ---------- RICH PAGE GALLERY GRID ---------- */

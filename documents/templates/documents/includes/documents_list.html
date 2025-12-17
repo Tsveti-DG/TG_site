@@ -2,7 +2,7 @@
     <ul>
         {% for doc in documents %}
         <li>
-            <a href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a>
+            <a class="file-link content-link" href="{{ doc.file.url }}" target="_blank">{{ doc.title }}</a>
 
             {% if doc.description %}
                 <small> – {{ doc.description }}</small>
