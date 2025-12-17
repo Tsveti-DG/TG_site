@@ -54,12 +54,12 @@ def students(request):
     return render(request, "core/students.html")
 
 
-def students_schedule(request):
-    return render(request, "core/students_schedule.html")
+def students_daily_regime(request):
+    return render(request, "core/students_daily_regime.html")
 
 
-def students_graphics(request):
-    return render(request, "core/students_graphics.html")
+def students_schedules(request):
+    return render(request, "core/students_schedules.html")
 
 
 def students_nvo(request):
