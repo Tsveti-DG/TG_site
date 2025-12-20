@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% load document_tags %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Архив</h1>
+
+    {% if archive_tree %}
+        {% for block in archive_tree %}
+            <h2>{{ block.category.name }}</h2>
+
+            {% for subblock in block.subcategories %}
+                <h3>{{ subblock.subcategory.name }}</h3>
+
+                <ul>
+                    {% for doc in subblock.documents %}
+                        <li>
+                            <a class="file-link content-link"
+                               href="{{ doc.file.url }}"
+                               target="_blank">
+                                {{ doc.title }}
+                            </a>
+
+                            {% if doc.description %}
+                                <small> – {{ doc.description }}</small>
+                            {% endif %}
+
+                            {% if doc.uploaded_at %}
+                                <small> / {{ doc.uploaded_at }}</small>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p><em>Няма архивирани документи.</em></p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+
+{% comment %}
+
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Архив</h1>
+
+    {% if documents %}
+        <ul>
+            {% for doc in documents %}
+                <li>
+                    <a class="file-link content-link"
+                       href="{{ doc.file.url }}"
+                       target="_blank">
+                        {{ doc.title }}
+                    </a>
+
+                    <small>
+                        – {{ doc.subcategory.name }} / {{ doc.subcategory.category.name }}
+                    </small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p><em>Няма архивирани документи.</em></p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% endcomment %}

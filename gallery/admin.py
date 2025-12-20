@@ -11,8 +11,8 @@ class GalleryImageInline(admin.TabularInline):
 
 @admin.register(GalleryAlbum)
 class GalleryAlbumAdmin(admin.ModelAdmin):
-    list_display = ("title", "order", "related_news")
+    list_display = ("title", "code", "order", "created_at", "related_news")
     list_editable = ("order",)
-    prepopulated_fields = {"slug": ("title",)}
-    ordering = ("order", "title")
+    readonly_fields = ("code",)
+    ordering = ("-created_at", "order", "title")
     inlines = [GalleryImageInline]

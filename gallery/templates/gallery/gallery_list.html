@@ -10,7 +10,7 @@
         {% for album in albums %}
         <div class="gallery-album-card">
 
-            <a href="{% url 'gallery:gallery_detail' album.slug %}">
+            <a href="{% url 'gallery:gallery_detail' album.code %}">
                 {% if album.cover_image %}
                     <img src="{{ album.cover_image.url }}" alt="{{ album.title }}">
                 {% else %}
@@ -19,7 +19,7 @@
             </a>
 
             <h2>
-                <a href="{% url 'gallery:gallery_detail' album.slug %}">
+                <a href="{% url 'gallery:gallery_detail' album.code %}">
                     {{ album.title }}
                 </a>
             </h2>

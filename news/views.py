@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 
 from .models import News
-from gallery.models import GalleryAlbum  # за related_albums в детайла
+# from gallery.models import GalleryAlbum  # за related_albums в детайла
 
 
 def news_list(request):
@@ -15,11 +15,12 @@ def news_list(request):
     return render(request, 'news/news_list.html', {'news_page': news_page})
 
 
-def news_detail(request, slug):
-    article = get_object_or_404(News, slug=slug)
+def news_detail(request, code):
+    article = get_object_or_404(News, code=code)
 
     # Албуми, свързани с тази новина
-    related_albums = GalleryAlbum.objects.filter(related_news=article)
+    # related_albums = GalleryAlbum.objects.filter(related_news=article)
+    related_albums = []
 
     return render(request, "news/news_detail.html", {
         "article": article,

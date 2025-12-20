@@ -1,13 +1,14 @@
 # from django.utils.text import slugify
-from slugify import slugify
+# from slugify import slugify
+# from utils.text import cyrillic_slugify
 
 
-print(slugify("Правила за поведение 2"))
+# print(cyrillic_slugify("Правила за поведение 2 яаояь   ,,, "))
 
-print(slugify(" 2______    Още неща"))
+# print(cyrillic_slugify(" 2______    Още неща"))
 
-print(slugify("Щастие"))
+# print(cyrillic_slugify("Щастие"))
 
-print(slugify("Кошмар"))
+# print(cyrillic_slugify("Кошмар"))
 
-print("Правила за поведение")
+# print("Правила за поведение")

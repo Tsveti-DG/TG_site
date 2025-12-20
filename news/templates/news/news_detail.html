@@ -59,7 +59,7 @@
             <ul class="related-albums-list">
                 {% for album in related_albums %}
                     <li>
-                        <a href="{% url 'gallery:gallery_detail' album.slug %}">
+                        <a href="{% url 'gallery:gallery_detail' album.code %}">
                             {{ album.title }}
                         </a>
                     </li>
