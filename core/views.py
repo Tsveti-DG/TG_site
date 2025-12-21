@@ -10,8 +10,9 @@ def home(request):
         'latest_news': latest_news,
     })
 
-
 # За нас
+
+
 def about(request):
     return render(request, "core/about.html")
 
@@ -52,6 +53,10 @@ def education(request):
 # За учениците
 def students(request):
     return render(request, "core/students.html")
+
+
+def students_available_places(request):
+    return render(request, "core/students_available_places.html")
 
 
 def students_daily_regime(request):
