@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 from django.utils import timezone
 from core.utils.text import unique_code
 
@@ -25,6 +26,7 @@ class GalleryAlbum(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        related_name="related_albums",
         verbose_name="Свързана новина",
         help_text="По желание можеш да свържеш албума с новина.",
     )
@@ -71,8 +73,20 @@ class GalleryImage(models.Model):
         GalleryAlbum,
         on_delete=models.CASCADE,
         related_name="images",
-        verbose_name="Албум"
+        verbose_name="Албум",
+        null=True,
+        blank=True,
     )
+
+    news = models.ForeignKey(
+        "news.News",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="gallery_images",
+        verbose_name="Новина"
+    )
+
     image = models.ImageField("Снимка", upload_to="gallery/")
     caption = models.CharField("Описание", max_length=255, blank=True)
     order = models.PositiveIntegerField("Ред", default=0)
@@ -83,34 +97,54 @@ class GalleryImage(models.Model):
         verbose_name_plural = "Снимки"
 
     def __str__(self):
-        return f"{self.album.title} – снимка"
+        if self.album:
+            return f"{self.album.title} – снимка"
+        if self.news:
+            return f"Новина: {self.news.title} – снимка"
+        return "Снимка (без връзка)"
+
+    def clean(self):
+        if not self.album and not self.news:
+            raise ValidationError(
+                "Снимката трябва да е свързана с албум или новина.")
 
 
-# class GalleryVideo(models.Model):
-#     album = models.ForeignKey(
-#         GalleryAlbum,
-#         on_delete=models.CASCADE,
-#         related_name="videos",
-#         verbose_name="Албум"
-#     )
+class GalleryVideo(models.Model):
+    album = models.ForeignKey(
+        GalleryAlbum,
+        on_delete=models.CASCADE,
+        related_name="videos",
+        verbose_name="Албум",
+        null=True,
+        blank=True,
+    )
 
-#     video_url = models.URLField(
-#         "Видео (YouTube / Vimeo)",
-#         help_text="Постави линк към YouTube или Vimeo видео"
-#     )
+    news = models.ForeignKey(
+        "news.News",
+        on_delete=models.CASCADE,
+        related_name="gallery_videos",
+        verbose_name="Новина",
+        null=True,
+        blank=True,
+    )
 
-#     title = models.CharField(
-#         "Заглавие",
-#         max_length=255,
-#         blank=True
-#     )
+    video_url = models.URLField(
+        "YouTube видео",
+        help_text="Постави линк към YouTube видео"
+    )
 
-#     order = models.PositiveIntegerField("Ред", default=0)
+    title = models.CharField(
+        "Заглавие",
+        max_length=255,
+        blank=True
+    )
 
-#     class Meta:
-#         ordering = ["order", "id"]
-#         verbose_name = "Видео"
-#         verbose_name_plural = "Видеа"
+    order = models.PositiveIntegerField("Ред", default=0)
 
-#     def __str__(self):
-#         return self.title or self.video_url
+    class Meta:
+        ordering = ["order", "id"]
+        verbose_name = "Видео"
+        verbose_name_plural = "Видеа"
+
+    def __str__(self):
+        return self.title or self.video_url

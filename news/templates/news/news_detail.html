@@ -7,51 +7,71 @@
     <h1 class="news-title">{{ article.title }}</h1>
     <p class="news-date">{{ article.created_at|date:"d.m.Y H:i" }}</p>
 
-    {% if article.image or article.images.all %}
-    <div class="news-gallery-grid">
+    {# ========== ГАЛЕРИЯ (СНИМКИ) ========== #}
+    {% if article.image or article.gallery_images.exists %}
+        <div class="news-gallery-grid">
 
-        {% if article.image %}
-        <a href="{{ article.image.url }}" 
-           class="glightbox" 
-           data-gallery="news-{{ article.id }}">
-            <img src="{{ article.image.url }}" 
-                 alt="{{ article.title }}">
-        </a>
-        {% endif %}
+            {# Основна снимка #}
+            {% if article.image %}
+                <a href="{{ article.image.url }}"
+                   class="glightbox"
+                   data-gallery="news-{{ article.id }}">
+                    <img src="{{ article.image.url }}"
+                         alt="{{ article.title }}">
+                </a>
+            {% endif %}
 
-        {% for img in article.images.all %}
-        <a href="{{ img.image.url }}" 
-           class="glightbox" 
-           data-gallery="news-{{ article.id }}">
-            <img src="{{ img.image.url }}" 
-                 alt="{{ img.caption }}">
-                 <span>{{ img.caption }}</span>
-        </a>
-        {% endfor %}
+            {# Допълнителни снимки от GalleryImage #}
+            {% for img in article.gallery_images.all %}
+                <a href="{{ img.image.url }}"
+                   class="glightbox"
+                   data-gallery="news-{{ article.id }}"
+                   data-title="{{ img.caption|default:'' }}">
 
-    </div>
-    {% endif %}
+                    <img src="{{ img.image.url }}"
+                         alt="{{ img.caption }}">
+                    {% if img.caption %}
+                        <span>{{ img.caption }}</span>
+                    {% endif %}
+                </a>
+            {% endfor %}
 
-    {% if article.youtube_id %}
-    <a href="https://www.youtube.com/watch?v={{ article.youtube_id }}"
-       class="glightbox"
-       data-type="video"
-       data-gallery="news-{{ article.id }}">
-
-        <div class="news-video-wrapper">
-            <img src="https://img.youtube.com/vi/{{ article.youtube_id }}/hqdefault.jpg"
-                 alt="Видео"
-                 class="news-video-thumbnail">
-            <div class="news-video-play-icon">▶</div>
         </div>
-
-    </a>
     {% endif %}
 
+
+    {# ========== ВИДЕА (YOUTUBE) ========== #}
+    {% if article.gallery_videos.exists %}
+        <div class="news-gallery-grid">
+
+            {% for video in article.gallery_videos.all %}
+                <a href="{{ video.video_url }}"
+                   class="glightbox"
+                   data-type="video"
+                   data-gallery="news-{{ article.id }}"
+                   data-title="{{ video.title|default:'Видео' }}">
+
+                    <div class="news-video-wrapper">
+                        <img src="https://img.youtube.com/vi/{{ video.video_url|cut:'https://www.youtube.com/watch?v='|cut:'https://youtu.be/' }}/hqdefault.jpg"
+                             alt="{{ video.title|default:'Видео' }}"
+                             class="news-video-thumbnail">
+                        <div class="news-video-play-icon">▶</div>
+                    </div>
+
+                </a>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+
+
+    {# ========== ТЕКСТ ========== #}
     <div class="news-detail-content">
         {{ article.content|linebreaks }}
     </div>
 
+
+    {# ========== СВЪРЗАНИ АЛБУМИ ========== #}
     {% if related_albums %}
         <div class="related-albums-block">
             <h3>Свързани фото албуми</h3>

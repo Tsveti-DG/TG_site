@@ -20,7 +20,7 @@ def news_detail(request, code):
 
     # Албуми, свързани с тази новина
     # related_albums = GalleryAlbum.objects.filter(related_news=article)
-    related_albums = []
+    related_albums = article.related_albums.all()
 
     return render(request, "news/news_detail.html", {
         "article": article,

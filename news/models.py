@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from core.utils.text import unique_code
 
 
 class News(models.Model):
@@ -13,14 +14,11 @@ class News(models.Model):
         help_text="Автоматично генерирано от заглавието",
     )
     image = models.ImageField(
-        "Основна снимка", upload_to='news_images/', blank=True, null=True)
-
-    youtube_id = models.CharField(
-        "YouTube идентификатор",
-        max_length=50,
+        "Водеща снимка",
+        upload_to='news_images/',
         blank=True,
         null=True,
-        help_text="Символите от url адреса след https://www.youtube.com/watch?v=",
+        help_text="Снимка, която се показва в списъка с новини и в началото на статията"
     )
 
     class Meta:
@@ -28,19 +26,12 @@ class News(models.Model):
         verbose_name = "Новина"
         verbose_name_plural = "Новини"
 
-    def __str__(self):
-        return self.title
-
     def get_absolute_url(self):
         return reverse('news:news_detail', kwargs={'code': self.code})
 
-
-class NewsImage(models.Model):
-    news = models.ForeignKey(
-        News, on_delete=models.CASCADE, related_name='images'
-    )
-    image = models.ImageField("Снимка", upload_to='news_images/')
-    caption = models.CharField("Надпис", max_length=255, blank=True)
+    def save(self, *args, **kwargs):
+        self.code = unique_code(News, self.title, self.pk)
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Снимка за {self.news.title}"
+        return self.title

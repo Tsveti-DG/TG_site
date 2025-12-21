@@ -1,19 +1,36 @@
 from django.contrib import admin
-from .models import News, NewsImage
+
+from gallery.models import GalleryImage, GalleryVideo
+from .models import News
 
 
-class NewsImageInline(admin.TabularInline):
-    model = NewsImage
+class GalleryImageInline(admin.TabularInline):
+    model = GalleryImage
+    fk_name = "news"
     extra = 1
-    fields = ("image", "caption")
+    fields = ("image", "caption", "order")
+    ordering = ("order",)
+    verbose_name = "Снимка"
+    verbose_name_plural = "Снимки"
+    show_change_link = True
+
+
+class GalleryVideoInline(admin.TabularInline):
+    model = GalleryVideo
+    fk_name = "news"
+    extra = 1
+    fields = ("video_url", "title", "order")
+    ordering = ("order",)
+    verbose_name = "Видео"
+    verbose_name_plural = "Видеа"
     show_change_link = True
 
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    fields = ("title", "code", "content", "image", "youtube_id")
+    fields = ("title", "code", "content", "created_at", "image")
     list_display = ("title", "created_at", "code")
     search_fields = ("title", "content")
-    readonly_fields = ("code",)
     ordering = ("-created_at",)
-    inlines = [NewsImageInline]
+    readonly_fields = ("code", "created_at")
+    inlines = [GalleryImageInline, GalleryVideoInline]

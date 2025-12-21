@@ -30,7 +30,8 @@ class SubCategory(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name="subcategories"
+        related_name="subcategories",
+        verbose_name="Категория"
     )
     name = models.CharField("Име", max_length=200)
     order = models.PositiveIntegerField("Ред", default=0)
@@ -50,6 +51,7 @@ class Document(models.Model):
         SubCategory,
         on_delete=models.CASCADE,
         related_name="documents",
+        verbose_name="Подкатегория"
     )
 
     title = models.CharField("Заглавие", max_length=255)
