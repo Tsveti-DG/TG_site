@@ -39,10 +39,11 @@
         <li>
             <a href="{% url 'core:students' %}">За учениците</a>
             <ul class="dropdown">
+                <li><a href="{% url 'core:students_available_places' %}">Свободни места</a></li>
                 <li><a href="{% url 'core:students_daily_regime' %}">Дневен режим</a></li>
                 <li><a href="{% url 'core:students_schedules' %}">Графици</a></li>
                 <li><a href="{% url 'core:students_nvo' %}">НВО</a></li>
-                <li><a href="{% url 'core:students_dzi' %}">ДЗИ и ДИЗПК</a></li>
+                <li><a href="{% url 'core:students_dzi' %}">ДЗИ и ЗДИППК</a></li>
                 <li><a href="{% url 'core:students_scholarships' %}">Стипендии</a></li>
                 <li><a href="{% url 'core:students_diary' %}">Електронен дневник</a></li>
             </ul>

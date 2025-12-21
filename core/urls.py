@@ -22,6 +22,8 @@ urlpatterns = [
 
     # За учениците
     path("students/", views.students, name="students"),
+    path("students/available_places/", views.students_available_places,
+         name="students_available_places"),
     path("students/daily_regime/", views.students_daily_regime,
          name="students_daily_regime"),
     path("students/schedules/", views.students_schedules,
