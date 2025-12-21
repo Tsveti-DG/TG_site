@@ -20,18 +20,47 @@
     {% endif %}
 
     <!-- FULLSCREEN GALLERY WITH GLIGHTBOX -->
-    <div class="gallery-image-grid">
+    <!-- <div class="gallery-image-grid"> -->
+    <!-- Да го оправя после задължително -->
+    <div class="news-gallery-grid">
+
+        {# 📷 СНИМКИ #}
         {% for img in images %}
         <a href="{{ img.image.url }}"
-           class="glightbox"
-           data-gallery="album-{{ album.id }}"
-           data-title="{{ img.caption|default:'' }}">
+            class="glightbox"
+            data-gallery="album-{{ album.id }}"
+            data-title="{{ img.caption|default:'' }}">
 
             <img src="{{ img.image.url }}"
-                 alt="{{ img.caption }}"
-                 class="gallery-thumb">
+                alt="{{ img.caption }}"
+                class="gallery-thumb">
         </a>
         {% endfor %}
+
+        {# 🎬 ВИДЕА #}
+
+        {% for video in videos %}
+        <a href="{{ video.video_url }}"
+        class="glightbox"
+        data-type="video"
+        data-gallery="album-{{ album.id }}"
+        data-title="{{ video.title|default:'Видео' }}">
+
+            <div class="gallery-video-wrapper">
+
+                {# 👉 YouTube thumbnail #}
+                <img
+                    src="https://img.youtube.com/vi/{{ video.video_url|cut:'https://www.youtube.com/watch?v='|cut:'https://youtu.be/' }}/hqdefault.jpg"
+                    alt="{{ video.title|default:'Видео' }}"
+                    class="gallery-video-thumbnail"
+                >
+
+                <div class="gallery-video-play-icon">▶</div>
+
+            </div>
+        </a>
+        {% endfor %}
+
     </div>
 
     <p class="back-to-gallery">

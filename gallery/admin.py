@@ -1,18 +1,27 @@
 from django.contrib import admin
-from .models import GalleryAlbum, GalleryImage
+from .models import GalleryAlbum, GalleryImage, GalleryVideo
 
 
 class GalleryImageInline(admin.TabularInline):
     model = GalleryImage
-    extra = 2
+    fk_name = "album"
+    extra = 1
     fields = ("image", "caption", "order")
+    show_change_link = True
+
+
+class GalleryVideoInline(admin.TabularInline):
+    model = GalleryVideo
+    fk_name = "album"
+    extra = 1
+    fields = ("video_url", "title", "order")
     show_change_link = True
 
 
 @admin.register(GalleryAlbum)
 class GalleryAlbumAdmin(admin.ModelAdmin):
-    list_display = ("title", "order", "related_news")
+    list_display = ("title", "code", "order", "created_at", "related_news")
     list_editable = ("order",)
-    prepopulated_fields = {"slug": ("title",)}
-    ordering = ("order", "title")
-    inlines = [GalleryImageInline]
+    readonly_fields = ("code",)
+    ordering = ("-created_at", "order", "title")
+    inlines = [GalleryImageInline, GalleryVideoInline]

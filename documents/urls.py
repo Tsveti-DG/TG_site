@@ -1,4 +1,3 @@
-# documents/urls.py
 from django.urls import path
 from . import views
 
@@ -11,8 +10,13 @@ urlpatterns = [
         name="documents_overview",
     ),
     path(
-        "<slug:supercategory_slug>/",
-        views.documents_by_supercategory,
-        name="documents_by_super",
+        "archive/",
+        views.documents_archive,
+        name="documents_archive",
+    ),
+    path(
+        "<str:category_code>/",
+        views.documents_by_category,
+        name="documents_by_category",
     ),
 ]

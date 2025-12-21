@@ -16,9 +16,19 @@
         <li>
             <a href="{% url 'documents:documents_overview' %}">Документи</a>
             <ul class="dropdown">
-                {% for super in menu_supercategories %}
-                    <li><a href="{% url 'documents:documents_by_super' super.slug %}">{{ super.name }}</a></li>
+                {% for category in menu_categories %}
+                    <li><a href="{% url 'documents:documents_by_category' category.code %}">{{ category.name }}</a></li>
                 {% endfor %}
+
+                {% if show_archive %}
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{% url 'documents:documents_archive' %}">
+                            📦 Архив ({{ archived_count }})
+                        </a>
+                    </li>
+                {% endif %}
+                <!-- <li><a href="{{ menu_archive_url }}">Архив</a></li> -->
             </ul>
         </li>
 

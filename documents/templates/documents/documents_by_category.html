@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% load document_tags %}
+
+{% block content %}
+<div class="page-container">
+    <h1>{{ category.name }}</h1>
+
+    {% if subcategories %}
+        {% if subcategories|length == 1 and subcategories.0.name|lower == category.name|lower %}
+            {# Само една подкатегория със същото име като категорията → не показваме h3 #}
+            {% show_documents subcategories.0 %}
+        {% else %}
+            {# Повече подкатегории или различни имена → нормално показване #}
+            {% for sub in subcategories %}
+                <h3>{{ sub.name }}</h3>
+                {% show_documents sub %}
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        <p><em>Няма документи в тази категория.</em></p>
+    {% endif %}
+
+</div>
+{% endblock %}

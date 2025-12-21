@@ -1,22 +1,16 @@
 from django import template
 from documents.models import Document
 
+# documents/templatetags/document_tags.py
+
 register = template.Library()
 
 
-@register.inclusion_tag('documents/includes/documents_list.html')
-def show_documents(category):
-    if not category:
-        return {'documents': []}
-
-    # Проверяваме дали суперкатегорията е "Архив"
-    is_archive = category.supercategory.name.lower() == "архив"
-
-    # Ако сме в "Архив", взимаме само архивирани документи
-    # иначе — само неархивирани
+@register.inclusion_tag("documents/includes/documents_list.html")
+def show_documents(subcategory):
     documents = Document.objects.filter(
-        category=category,
-        is_archived=is_archive
-    ).order_by('order', '-uploaded_at', 'title')
+        subcategory=subcategory,
+        is_archived=False
+    ).order_by("-uploaded_at", "title")
 
-    return {'documents': documents}
+    return {"documents": documents}
