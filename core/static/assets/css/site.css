@@ -66,6 +66,20 @@ h1 { font-size: 32px; }
 h2 { font-size: 26px; margin-bottom: 10px; }
 /* h3 { font-size: 20px; } */
 
+
+/* logo before h1 start */
+.page-title-with-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* разстояние между логото и h1 */
+}
+
+.page-title-logo {
+    height: 105px;
+    width: auto;
+}
+/* logo before h1 end */
+
 .page-container h3 {
     text-transform: uppercase;
 }
