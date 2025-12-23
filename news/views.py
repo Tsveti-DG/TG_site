@@ -1,6 +1,7 @@
 # news/views.py
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.urls import reverse
 
 from .models import News
 # from gallery.models import GalleryAlbum  # за related_albums в детайла
@@ -18,14 +19,15 @@ def news_list(request):
 def news_detail(request, code):
     article = get_object_or_404(News, code=code)
 
-    # Албуми, свързани с тази новина
-    # related_albums = GalleryAlbum.objects.filter(related_news=article)
     related_albums = article.related_albums.all()
 
-    return render(request, "news/news_detail.html", {
+    context = {
         "article": article,
         "related_albums": related_albums,
-    })
+        "news_list_url": reverse("news:news_list"),
+    }
+
+    return render(request, "news/news_detail.html", context)
 
 
 def creativity(request):

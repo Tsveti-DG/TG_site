@@ -90,7 +90,8 @@
 
 
     <p class="back-to-news">
-        <a class="read-more" href="{% url 'news:news_list' %}">
+        <a class="read-more"
+            href="{{ request.GET.next|default:news_list_url }}">
             ← Обратно към новините
         </a>
     </p>
