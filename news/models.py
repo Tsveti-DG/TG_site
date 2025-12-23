@@ -1,12 +1,18 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from core.utils.text import unique_code
 
 
 class News(models.Model):
     title = models.CharField("Заглавие", max_length=255)
     content = models.TextField("Съдържание")
-    created_at = models.DateTimeField("Публикувана на", auto_now_add=True)
+    created_at = models.DateTimeField("Създадена на", auto_now_add=True)
+    published_at = models.DateTimeField(
+        "Дата на публикуване",
+        default=timezone.now,
+        help_text="Дата и час на публикуване"
+    )
     code = models.SlugField(
         "Код (URL)",
         max_length=80,
@@ -22,7 +28,7 @@ class News(models.Model):
     )
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-published_at', '-created_at']
         verbose_name = "Новина"
         verbose_name_plural = "Новини"
 

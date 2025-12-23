@@ -28,9 +28,10 @@ class GalleryVideoInline(admin.TabularInline):
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    fields = ("title", "code", "content", "created_at", "image")
-    list_display = ("title", "created_at", "code")
+    fields = ("title", "code", "content",
+              "created_at", "published_at", "image")
+    list_display = ("title", "created_at", "published_at", "code")
     search_fields = ("title", "content")
-    ordering = ("-created_at",)
+    ordering = ("-published_at", "-created_at",)
     readonly_fields = ("code", "created_at")
     inlines = [GalleryImageInline, GalleryVideoInline]
