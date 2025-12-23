@@ -9,7 +9,7 @@
         {% for item in news_page %}
             <div class="news-card">
 
-                <a href="{{ item.get_absolute_url }}">
+                <a href="{{ item.get_absolute_url }}?next={{ request.get_full_path|urlencode }}">
                     {% if item.image %}
                         <img src="{{ item.image.url }}" alt="{{ item.title }}">
                     {% else %}
@@ -19,7 +19,7 @@
 
                 <div class="news-content">
                     <h2 class="news-title">
-                        <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                        <a href="{{ item.get_absolute_url }}?next={{ request.get_full_path|urlencode }}">{{ item.title }}</a>
                     </h2>
 
                     <div class="news-date">
@@ -30,7 +30,7 @@
                         {{ item.content|truncatechars:200 }}
                     </p>
 
-                    <a class="read-more" href="{{ item.get_absolute_url }}">
+                    <a class="read-more" href="{{ item.get_absolute_url }}?next={{ request.get_full_path|urlencode }}">
                         Прочети още →
                     </a>
                 </div>
