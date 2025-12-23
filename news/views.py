@@ -8,7 +8,7 @@ from .models import News
 
 def news_list(request):
     news = News.objects.all()
-    paginator = Paginator(news, 5)  # 5 новини на страница
+    paginator = Paginator(news, 6)  # 6 новини на страница
     page = request.GET.get('page')
     news_page = paginator.get_page(page)
 
