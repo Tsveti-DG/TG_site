@@ -40,13 +40,13 @@
 
     <div class="pagination">
         {% if news_page.has_previous %}
-            <a href="?page={{ news_page.previous_page_number }}">Предишна</a>
+            <a href="?page={{ news_page.previous_page_number }}">«</a>
         {% endif %}
 
         <span>Страница {{ news_page.number }} от {{ news_page.paginator.num_pages }}</span>
 
         {% if news_page.has_next %}
-            <a href="?page={{ news_page.next_page_number }}">Следваща</a>
+            <a href="?page={{ news_page.next_page_number }}">»</a>
         {% endif %}
     </div>      
 
