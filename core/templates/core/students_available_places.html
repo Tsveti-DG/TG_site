@@ -11,9 +11,94 @@
             href="{% static 'assets/documents/свободни места ученици.pdf' %}">
             Обявени свободни места за ученици
         </a>
+        <small> / 08.10.2025 г.</small>
     </p>
 
-    <table border="1" cellpadding="8" cellspacing="0">
+    <style>
+        /* =====================================
+           UNIVERSAL TABLE STYLES (TEMP INLINE)
+           ===================================== */
+
+        /* Safety – стабилен layout навсякъде */
+        /* *, *::before, *::after {
+            box-sizing: border-box;
+        } */
+
+        /* ===== BASE TABLE ===== */
+        .site-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            background: #fff;
+        }
+
+        /* ===== HEADER ===== */
+        .site-table thead th {
+            background-color: #881912; /* бордо */
+            color: #fff;
+            /* text-transform: uppercase; */
+            text-align: center;
+            padding: 12px 10px;
+            font-weight: 700;
+            border: 1px solid #6a182f;
+        }
+
+        /* ===== BODY ===== */
+        .site-table tbody td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .site-table tbody tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        /* =====================================
+           MOBILE (phones only)
+           ===================================== */
+
+        @media (max-width: 768px) {
+
+            .site-table thead {
+                display: none;
+            }
+
+            .site-table,
+            .site-table tbody,
+            .site-table tr,
+            .site-table td {
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+            .site-table tr {
+                margin-bottom: 18px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 12px;
+                background: #fff;
+            }
+
+            .site-table td {
+                padding: 6px 0;
+                border: none;
+                font-size: 0.9rem;
+            }
+
+            .site-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                color: #881912;
+                margin-bottom: 2px;
+            }
+        }
+    </style>
+
+    <table class="site-table">
         <thead>
             <tr>
                 <th>Клас</th>
@@ -25,62 +110,69 @@
         </thead>
         <tbody>
             <tr>
-                <td>9 а</td>
-                <td>Икономист</td>
-                <td>Икономика и мениджмънт</td>
-                <td>2</td>
-                <td>15.09.2025 г.</td>
+                <td data-label="Клас">9 а</td>
+                <td data-label="Професия">Икономист</td>
+                <td data-label="Специалност">Икономика и мениджмънт</td>
+                <td data-label="Свободни места">2</td>
+                <td data-label="Публикувано">15.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>9 а</td>
-                <td>Организатор Интернет приложения</td>
-                <td>Електронна търговия</td>
-                <td>3</td>
-                <td>26.09.2025 г.</td>
+                <td data-label="Клас">9 а</td>
+                <td data-label="Професия">Организатор Интернет приложения</td>
+                <td data-label="Специалност">Електронна търговия</td>
+                <td data-label="Свободни места">3</td>
+                <td data-label="Публикувано">26.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>10 а</td>
-                <td>Икономист</td>
-                <td>Икономика и мениджмънт</td>
-                <td>3</td>
-                <td>08.10.2025 г.</td>
+                <td data-label="Клас">10 а</td>
+                <td data-label="Професия">Икономист</td>
+                <td data-label="Специалност">Икономика и мениджмънт</td>
+                <td data-label="Свободни места">3</td>
+                <td data-label="Публикувано">08.10.2025 г.</td>
             </tr>
+
             <tr>
-                <td>10 а</td>
-                <td>Организатор Интернет приложения</td>
-                <td>Електронна търговия</td>
-                <td>1</td>
-                <td>18.09.2025</td>
+                <td data-label="Клас">10 а</td>
+                <td data-label="Професия">Организатор Интернет приложения</td>
+                <td data-label="Специалност">Електронна търговия</td>
+                <td data-label="Свободни места">1</td>
+                <td data-label="Публикувано">18.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>11 а</td>
-                <td>Икономист</td>
-                <td>Икономика и мениджмънт</td>
-                <td>1</td>
-                <td>15.09.2025 г.</td>
+                <td data-label="Клас">11 а</td>
+                <td data-label="Професия">Икономист</td>
+                <td data-label="Специалност">Икономика и мениджмънт</td>
+                <td data-label="Свободни места">1</td>
+                <td data-label="Публикувано">15.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>11 а</td>
-                <td>Организатор Интернет приложения</td>
-                <td>Електронна търговия</td>
-                <td>1</td>
-                <td>15.09.2025 г.</td>
+                <td data-label="Клас">11 а</td>
+                <td data-label="Професия">Организатор Интернет приложения</td>
+                <td data-label="Специалност">Електронна търговия</td>
+                <td data-label="Свободни места">1</td>
+                <td data-label="Публикувано">15.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>12 а</td>
-                <td>Икономист</td>
-                <td>Икономика и мениджмънт</td>
-                <td>2</td>
-                <td>15.09.2025 г.</td>
+                <td data-label="Клас">12 а</td>
+                <td data-label="Професия">Икономист</td>
+                <td data-label="Специалност">Икономика и мениджмънт</td>
+                <td data-label="Свободни места">2</td>
+                <td data-label="Публикувано">15.09.2025 г.</td>
             </tr>
+
             <tr>
-                <td>12 а</td>
-                <td>Организатор Интернет приложения</td>
-                <td>Електронна търговия</td>
-                <td>1</td>
-                <td>15.09.2025 г.</td>
+                <td data-label="Клас">12 а</td>
+                <td data-label="Професия">Организатор Интернет приложения</td>
+                <td data-label="Специалност">Електронна търговия</td>
+                <td data-label="Свободни места">1</td>
+                <td data-label="Публикувано">15.09.2025 г.</td>
             </tr>
         </tbody>
     </table>
-
+</div>
 {% endblock %}

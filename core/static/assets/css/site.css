@@ -20,13 +20,16 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+
 }
 
 body {
     display: flex;
     flex-direction: column;
 
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;    
     /* background: var(--light); */
@@ -437,7 +440,8 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 
 @media (max-width: 768px) {
   .site-content {
-    padding: 20px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
