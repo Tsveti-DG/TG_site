@@ -47,7 +47,7 @@
         <nav class="pagination">
 
             {% if issues_page.has_previous %}
-                <a href="?page={{ issues_page.previous_page_number }}">« Назад</a>
+                <a href="?page={{ issues_page.previous_page_number }}">«</a>
             {% endif %}
 
             <span>
@@ -55,7 +55,7 @@
             </span>
 
             {% if issues_page.has_next %}
-                <a href="?page={{ issues_page.next_page_number }}">Напред »</a>
+                <a href="?page={{ issues_page.next_page_number }}">»</a>
             {% endif %}
 
         </nav>
