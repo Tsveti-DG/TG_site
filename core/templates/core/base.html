@@ -88,7 +88,48 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const dropdownItems = document.querySelectorAll(".has-dropdown");
+            const isTouch = window.matchMedia("(hover: none)").matches;
+
+            dropdownItems.forEach(item => {
+                const link = item.querySelector("a");
+
+                link.addEventListener("click", function (e) {
+
+                    // само за touch устройства
+                    if (!isTouch) return;
+
+                    e.preventDefault();
+
+                    const isOpen = item.classList.contains("open");
+
+                    // затваряме всички dropdown-и
+                    dropdownItems.forEach(other => {
+                        other.classList.remove("open");
+                    });
+
+                    // ако не е било отворено → отваряме
+                    if (!isOpen) {
+                        item.classList.add("open");
+                    }
+                    // ако е било отворено → НЕ го отваряме пак → остава затворено
+                });
+            });
+
+            // тап извън навигацията → затваря всичко
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".main-nav")) {
+                    dropdownItems.forEach(item => {
+                        item.classList.remove("open");
+                    });
+                }
+            });
+
+        });
+    </script>
 
 </body>
 </html>
