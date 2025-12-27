@@ -90,46 +90,48 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-
             const dropdownItems = document.querySelectorAll(".has-dropdown");
             const isTouch = window.matchMedia("(hover: none)").matches;
 
+            // предпазва от "отваря и веднага затваря"
+            let justToggled = false;
+
             dropdownItems.forEach(item => {
-                const link = item.querySelector("a");
+                const link = item.querySelector(":scope > a");
 
+                // само за touch устройства
                 link.addEventListener("click", function (e) {
-
-                    // само за touch устройства
                     if (!isTouch) return;
 
                     e.preventDefault();
+                    e.stopPropagation();
+
+                    justToggled = true;
+                    setTimeout(() => { justToggled = false; }, 0);
 
                     const isOpen = item.classList.contains("open");
 
-                    // затваряме всички dropdown-и
-                    dropdownItems.forEach(other => {
-                        other.classList.remove("open");
-                    });
+                    // затваряме всички
+                    dropdownItems.forEach(other => other.classList.remove("open"));
 
-                    // ако не е било отворено → отваряме
+                    // втори тап върху същия → затваря (оставяме всички затворени)
                     if (!isOpen) {
                         item.classList.add("open");
                     }
-                    // ако е било отворено → НЕ го отваряме пак → остава затворено
                 });
             });
 
-            // тап извън навигацията → затваря всичко
+            // tap/click извън навигацията → затваря всичко
             document.addEventListener("click", function (e) {
+                if (justToggled) return;
+
                 if (!e.target.closest(".main-nav")) {
-                    dropdownItems.forEach(item => {
-                        item.classList.remove("open");
-                    });
+                    dropdownItems.forEach(item => item.classList.remove("open"));
                 }
             });
-
         });
     </script>
+
 
 </body>
 </html>
