@@ -4,14 +4,18 @@
     <div class="container top-bar-content">
 
         <div class="topbar-contact">
-            <a href="tel:065992318" class="topbar-icon-link">
+            <a href="tel:065992318"
+            class="topbar-icon-link toggle-contact"
+            data-target="phone">
                 <img src="{% static 'assets/icons/phone.svg' %}" alt="Телефон">
-                <span>0659 9 23 18</span>
+                <span class="contact-text">0659 9 23 18</span>
             </a>
 
-            <a href="mailto:info-1500219@edu.mon.bg" class="topbar-icon-link">
+            <a href="mailto:info-1500219@edu.mon.bg"
+            class="topbar-icon-link toggle-contact"
+            data-target="email">
                 <img src="{% static 'assets/icons/email.svg' %}" alt="Имейл">
-                <span>info-1500219@edu.mon.bg</span>
+                <span class="contact-text">info-1500219@edu.mon.bg</span>
             </a>
         </div>
 

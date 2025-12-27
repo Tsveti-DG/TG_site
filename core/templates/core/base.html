@@ -59,6 +59,36 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggles = document.querySelectorAll(".toggle-contact");
+
+            toggles.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    if (window.innerWidth > 768) return;
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // затваряме другите
+                    toggles.forEach(l => {
+                        if (l !== link) {
+                            l.classList.remove("active");
+                        }
+                    });
+
+                    // toggle на текущия
+                    link.classList.toggle("active");
+                });
+            });
+
+            // 👉 tap извън иконките затваря всичко
+            document.addEventListener("click", function () {
+                toggles.forEach(l => l.classList.remove("active"));
+            });
+        });
+    </script>
+
 
 </body>
 </html>

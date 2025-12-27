@@ -495,7 +495,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 30px;
     margin: 30px 0;
 }
@@ -736,7 +736,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 
 .homepage-news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 25px;
     margin-bottom: 30px;
 }
@@ -807,7 +807,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 
 .gallery-album-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 30px;
     margin: 30px 0;
 }
@@ -1031,9 +1031,10 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 }
 
 /* MAP BOX */
+
 .contact-map-box {
     flex: 1.2;
-    min-width: 350px;
+    min-width: 220px;
 }
 
 .contact-map-box iframe {
@@ -1047,7 +1048,8 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 /* INFO BOX */
 .contact-info-box {
     flex: 1;
-    min-width: 260px;
+    min-width: 200px;
+    /* overflow: hidden; */
     background: white;
     padding: 25px 30px;
     border-radius: 10px;
@@ -1065,10 +1067,6 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     line-height: 1.5;
 }
 
-.contact-map-box {
-    flex: 1.2;
-    min-width: 350px;
-}
 
 /* The actual data (телефон, имейл, адрес) */
 .contact-text {
@@ -1115,7 +1113,6 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 }
 
 
-
 /* =========================
    Footer
    ========================= */
@@ -1127,3 +1124,27 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     /* margin: 0; */
     /* margin-top: 20px; */
 }
+
+/* =========================
+   Topbar – mobile toggle
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .topbar-contact .contact-text {
+        display: none; /* скрито по подразбиране */
+        font-size: 14px;
+        white-space: nowrap;
+        color: white;
+    }
+
+    .topbar-contact .topbar-icon-link {
+        gap: 6px;
+    }
+
+    .topbar-contact .topbar-icon-link.active .contact-text {
+        display: inline;
+        color: white;
+    }
+}
+
