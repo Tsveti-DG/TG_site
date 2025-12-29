@@ -1150,12 +1150,6 @@ h2 { font-size: 26px; margin-bottom: 10px; }
    ========================= */
 
 @media (hover: hover) {
-    /* .main-nav ul li:hover > .dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    } */
-
     
     /* desktop hover */
     .main-nav li:hover > .dropdown {
@@ -1230,4 +1224,146 @@ h2 { font-size: 26px; margin-bottom: 10px; }
         transform: scale(1.02);
         box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
+}
+
+/* =========================
+   Mobile burger bar (Step 2)
+   ========================= */
+
+/* по подразбиране лентата е скрита (desktop/tablet) */
+.main-nav .mobile-nav-bar {
+  display: none;
+}
+
+/* показваме я само на телефон */
+@media (max-width: 600px) and (hover: none) {
+  .main-nav .mobile-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--burgundy);
+    color: white;
+
+    padding: 12px 14px;
+  }
+
+  .main-nav .mobile-nav-title {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+  }
+
+  .main-nav .mobile-nav-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: transparent;
+    border: 0;
+    padding: 6px;
+
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+
+    cursor: pointer;
+  }
+
+  .main-nav .mobile-nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 1.5px;
+    background: white;
+    border-radius: 2px;
+
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  }
+
+  /* МАХАМЕ грозния default outline, но пазим достъпност */
+  .main-nav .mobile-nav-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* X анимацията ще я активираме по-късно с клас (Step 4) */
+  .main-nav .mobile-nav-toggle.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .main-nav .mobile-nav-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .main-nav .mobile-nav-toggle.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+}
+
+/* subtle feedback on tap / hover */
+@media (hover: hover) {
+  .main-nav .mobile-nav-toggle:hover span {
+    opacity: 0.85;
+  }
+}
+
+.main-nav .mobile-nav-toggle:active span {
+  transform: scaleX(0.9);
+}
+
+/* =========================
+   Mobile menu open / close
+   ========================= */
+
+@media (max-width: 600px) and (hover: none) {
+
+  /* по подразбиране менюто е скрито */
+  .main-nav > ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* при отворено меню */
+  .main-nav.mobile-open > ul {
+    display: flex;
+  }
+
+  /* линковете на мобилно – пълна ширина */
+  .main-nav > ul > li > a {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Mobile dropdown behavior
+   ========================= */
+
+@media (max-width: 600px) and (hover: none) {
+
+  /* dropdown – скрит по подразбиране */
+  .main-nav .dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    display: none;
+
+    background: #6d0f0f;
+    /*margin-left: 18px;   */   /* леко навътре */
+    border-left: 2px solid rgba(255,255,255,0.2);
+  }
+
+  /* отворен dropdown */
+  .main-nav li.open > .dropdown {
+    display: block;
+  }
+
+  /* подменю линкове */
+  .main-nav .dropdown li a {
+    padding: 10px 50px;
+    font-size: 14px;
+    text-transform: none;
+  }
 }
