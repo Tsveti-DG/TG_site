@@ -1133,6 +1133,28 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     font-weight: 600;
 }
 
+@media (max-width: 500px) {
+
+  .contact-info-box p {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  /* иконка + label остават на първия ред */
+  .contact-icon,
+  .contact-label {
+    flex: 0 0 auto;
+  }
+
+  /* стойността отива на нов ред */
+  .contact-value {
+    flex: 0 0 100%;
+    margin-left: 34px; /* подравняване под текста, не под иконата */
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: -7px;
+  }
+}
 
 /* =========================
    Footer
