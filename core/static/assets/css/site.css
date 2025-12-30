@@ -22,7 +22,6 @@ html, body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
-
 }
 
 body {
@@ -36,6 +35,38 @@ body {
     background: #f9f9f9;
     color: var(--dark-grey);
     /* color: #333; */
+}
+
+/* =========================
+   Mobile tap highlight (disable default blue)
+   ========================= */
+a,
+button,
+[role="button"],
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================
+   Custom tap feedback (mobile only)
+   ========================= */
+@media (hover: none) {
+  a:active,
+  button:active {
+    /* background-color: rgba(255, 255, 255, 0.12); */
+    /* background-color: rgba(136, 25, 18, 0.16); *//* burgundy tint */
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 6px;
+  }
+}
+
+@media (hover: none) {
+  .mobile-nav-toggle:active {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+  }
 }
 
 .center {
@@ -87,6 +118,21 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     text-transform: uppercase;
 }
 
+.page-container ul {
+    list-style: none;
+    padding-left: 30px;
+    margin-left: 0;
+}
+
+.page-container ul li {
+    margin-bottom: 8px;
+}
+
+.page-container ul li small {
+    color: #555;
+    /* font-size: 14px; */
+}
+
 .page-container a.content-link {
     position: relative;
     color: var(--burgundy);
@@ -108,9 +154,13 @@ h2 { font-size: 26px; margin-bottom: 10px; }
 }
 
 /* при hover сменяме цвета на текста */
-.page-container a.content-link:hover {
+/* .page-container a.content-link:hover {
     color: inherit; /* взима основния текстов цвят */
-}
+/*} */
+
+/* @media (hover: hover) and (pointer: fine) {
+
+} */
 
 .page-container a.content-link:hover::after {
     width: 100%;
@@ -1315,7 +1365,7 @@ h2 { font-size: 26px; margin-bottom: 10px; }
     background: var(--burgundy);
     color: white;
 
-    padding: 12px 14px;
+    padding: 12px 18px;
   }
 
   .main-nav .mobile-nav-title {
