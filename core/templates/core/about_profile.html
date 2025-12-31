@@ -1,8 +1,58 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="page-container">
+    <style>
+        /* =========================
+        Embedded external page (iframe)
+        ========================= */
+
+        .iframe-wrapper {
+            width: 100%;
+            height: 80vh;          /* заема 80% от височината на екрана */
+            min-height: 1000px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+            background: white;
+            margin-top: 30px;
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    </style>
+
     <h1>Профил на купувача</h1>
-    <!-- <p>Тук ще сложим съдържание за профил на купувача.</p> -->
+
+    <p>
+        <a 
+            class="file-link content-link" target="_blank"
+            href="{% static 'assets/documents/Profil na kupuvacha.pdf' %}">
+            Вътрешни правила за поддържане Профил на купувача
+        </a>
+        <!-- <small> / 08.10.2025 г.</small> -->
+    </p>
+
+    <div class="iframe-wrapper">
+        <iframe
+            src="https://sop.bg/tg-vaprilov-1245/"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- <iframe class="Z8YsjS" 
+            title="Профил на купувача - TG Vasil Aprilov" 
+            name="htmlComp-iframe" 
+            width="100%" 
+            height="100%" 
+            data-src="" src="https://sop.bg/tg-vaprilov-1245/">
+        </iframe> -->
+
 </div>
 {% endblock %}

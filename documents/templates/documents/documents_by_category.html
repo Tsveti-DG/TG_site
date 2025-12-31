@@ -1,8 +1,31 @@
 {% extends "core/base.html" %}
 {% load document_tags %}
 
+{% load static %}
+
 {% block content %}
 <div class="page-container">
+    <p>
+        <em>
+        <a 
+            class="file-link content-link" target="_blank"
+            href="{% static 'assets/documents/pravantikorup.pdf' %}">
+            Вътрешни правила за превенция и противодействие на корупция, измами, нередности, злоупотреби, грешки и др.
+        </a>
+         и за установяване и предотвратяване на риска от настъпване на конфликт на интереси в Търговска гимназия „Васил Евстатиев Априлов“.
+        <!-- <small> / 08.10.2025 г.</small> -->
+        </em>
+    </p>
+    <p>
+        <em>
+        <strong>За сигнали:</strong>
+        <br>
+        гр. Червен бряг - 5980, общ. Червен бряг, обл. Плевен, ул. Тома Петков № 27;
+        <br>
+        <b>Тел</b>.: 0659/9 23 18; <b>E-mail</b>: info-1500219@edu.mon.bg;
+        </em>
+    </p>
+
     <h1>{{ category.name }}</h1>
 
     {% if subcategories %}

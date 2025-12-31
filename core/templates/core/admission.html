@@ -1,8 +1,18 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block content %}
+
 <div class="page-container">
     <h1>Прием</h1>
+
+    <p>
+        <a 
+            class="file-link content-link" target="_blank"
+            href="{% static 'assets/documents/свободни места ученици.pdf' %}">
+            Обявени свободни места за ученици
+        </a>
+        <small> / 08.10.2025 г.</small>
+    </p>
 
     <p><strong>За учебната 2025 / 2026 година училището ще осъществи прием на ученици по следните професии и специалности:</strong></p>
     <p><strong><em>Прием след завършен VII клас (основно образование):</em></strong></p>
