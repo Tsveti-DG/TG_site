@@ -1,0 +1,109 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+    <h1>Полезни връзки</h1>
+
+    <style>
+        .useful-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .useful-link-card {
+            display: block;
+            border-radius: 14px;
+            overflow: hidden;
+            text-decoration: none;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .useful-link-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* hover – само desktop */
+        @media (hover: hover) {
+            .useful-link-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .useful-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .useful-links-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+
+    <div class="useful-links-grid">
+
+        <a href="https://dnevnik.mon.bg" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/el-dnevnik.png' %}" alt="Електронен дневник">
+        </a>
+
+        <a href="https://docs-dnevnik.mon.bg/rakovodstvo-na-roditelya/obshta-informatsia"
+           target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/el-dnevnik-roditel.png' %}" alt="Е-дневник – родители">
+        </a>
+
+        <a href="https://docs-dnevnik.mon.bg/rakovodstvo-na-uchenika/obshta-informatsia"
+           target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/el-dnevnik-uchenik.png' %}" alt="Е-дневник – ученици">
+        </a>
+
+        <a href="https://www.mon.bg" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/mon-bigger.png' %}" alt="МОН">
+        </a>
+
+        <a href="https://rsvu.mon.bg/#/" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/rating3.png' %}" alt="Рейтингова система">
+        </a>
+
+        <a href="https://sacp.government.bg/" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/zakrila-na-deteto.png' %}" alt="Закрила на детето">
+        </a>
+
+        <!-- <a href="#" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/ne-si-sam.png' %}" alt="Не си сам">
+        </a> -->
+
+        <a href="https://www.mon.bg/dyasno-menyu/priobshtavashto-obrazovanie/telefonna-liniya-za-psihologicheska-podkrepa-na-uchenitsi-roditeli-i-uchiteli/"
+           target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/help-line.png' %}" alt="Психологическа подкрепа">
+        </a>
+
+        <!-- <a href="https://bpos.bg/" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/bpos.png' %}" alt="БПОС">
+        </a> -->
+
+        <a href="https://orientirane.mon.bg/" target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/karierno.png' %}" alt="Кариерно ориентиране">
+        </a>
+
+        <a href="https://www.mon.bg/dyasno-menyu/vakantsii/?level=11-grade"
+           target="_blank" class="useful-link-card">
+            <img src="{% static 'assets/images/useful/calendar.png' %}" alt="Календар ваканции">
+        </a>
+
+    </div>
+</div>
+{% endblock %}

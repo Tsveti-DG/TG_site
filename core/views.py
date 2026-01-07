@@ -79,8 +79,8 @@ def students_scholarships(request):
     return render(request, "core/students_scholarships.html")
 
 
-def students_diary(request):
-    return render(request, "core/students_diary.html")
+def students_useful_links(request):
+    return render(request, "core/students_useful_links.html")
 
 
 # Проекти и програми

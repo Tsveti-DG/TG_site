@@ -32,7 +32,9 @@ urlpatterns = [
     path("students/dzi/", views.students_dzi, name="students_dzi"),
     path("students/scholarships/", views.students_scholarships,
          name="students_scholarships"),
-    path("students/diary/", views.students_diary, name="students_diary"),
+    #     path("students/diary/", views.students_diary, name="students_diary"),
+    path("students/useful_links/", views.students_useful_links,
+         name="students_useful_links"),
 
     # Проекти и програми
     path("projects/", views.projects, name="projects"),
