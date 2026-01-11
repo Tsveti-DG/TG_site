@@ -249,37 +249,54 @@ hr.hr-end {
 } */
 
 .page-container a.content-link {
-    position: relative;
+    /* position: relative;
+    text-decoration: none;
+    transition: color 0.4s ease; */
     color: var(--burgundy);
     font-weight: 600;
+
+    position: relative;
     text-decoration: none;
-    transition: color 0.4s ease;
+
+    /* важно за inline елементи на няколко реда */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    padding-bottom: 2px;
+
+    background-image: linear-gradient(var(--burgundy), var(--dark-burgundy));
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.4s ease, color 1.1s ease;
+    /* transition: background-size 0.4s ease; */
 }
 
 /* underline с фиксиран бордо цвят */
-.page-container a.content-link::after {
+/* .page-container a.content-link::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -2px; /* леко под текста */
+    bottom: -2px;
     width: 0;
     height: 1px;
-    background-color: var(--burgundy); /* винаги бордо */
+    background-color: var(--burgundy);
     transition: width 0.4s ease;
-}
+} */
 
 /* при hover сменяме цвета на текста */
-/* .page-container a.content-link:hover {
-    color: inherit; /* взима основния текстов цвят */
-/*} */
+.page-container a.content-link:hover {
+    color: var(--dark-burgundy);
+    background-size: 100% 1px;
+}
 
 /* @media (hover: hover) and (pointer: fine) {
 
 } */
 
-.page-container a.content-link:hover::after {
+/* .page-container a.content-link:hover::after {
     width: 100%;
-}
+} */
 
 /* Линкове към файлове (PDF, DOC и др.) */
 .page-container a.file-link::before {
@@ -516,10 +533,10 @@ hr.hr-end {
 .main-nav a {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 15px;
-    font-weight: 900;
+    /* font-weight: 600; */
     text-transform: uppercase;
     display: block;
-    padding: 12px 20px;
+    padding: 12px 15px;
     color: white;
     text-decoration: none;
     transition: background 0.3s ease; /* smooth transition */
