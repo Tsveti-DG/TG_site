@@ -1,26 +1,32 @@
 {% extends "core/base.html" %}
-
 {% load static %}
 
-{% block content %}
-<style>
+{% block page_title %}
+<!-- <style>
     .aprilov-img {
         height: 100px;
     }
-</style>
+</style> -->
 
-<div class="page-container">
-    <h1>Екип - имена и длъжност</h1>
-    <div>
-        <img src="{% static 'assets/images/v_aprilov.jpg' %}" alt="Васил Априлов" class="aprilov-img">
-        <p><strong>СПИСЪК НА КОЛЕКТИВА ПРИ ТЪРГОВСКА ГИМНАЗИЯ „ВАСИЛ АПРИЛОВ“ - гр. ЧЕРВЕН БРЯГ</strong></p>
+<div class="page-title">
+    <div class="page-title-with-logo">
+        <img src="{% static 'assets/images/v_aprilov.jpg' %}"
+             alt="Васил Априлов"
+             class="page-title-logo">
+        <h1>Екип – имена и длъжност</h1>
     </div>
-    
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    <h3>СПИСЪК НА КОЛЕКТИВА ПРИ ТЪРГОВСКА ГИМНАЗИЯ „ВАСИЛ АПРИЛОВ“ - гр. ЧЕРВЕН БРЯГ</h3>
+   
     <p><strong>Директор:</strong></p>
-    <ol>
+    <ul>
         <li>Виолета Стоянова Манолева</li>
-    </ol>
-    
+    </ul>    
     
     <p><strong>Административен персонал:</strong></p>
     <ol>
@@ -42,9 +48,10 @@
     </ol>
     
     <p><strong>Обслужващ персонал:</strong></p>
-    <ol>
+    <ul>
         <li>Мария Димитрова Георгиева - хигиенист</li>
-    </ol>
+    </ul>
+    <hr class="hr-end">
 
 </div>
 {% endblock %}

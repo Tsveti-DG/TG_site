@@ -35,6 +35,8 @@
 
     <main class="site-content">
         <div class="container">
+            {% block page_intro %}{% endblock %}
+            {% block page_title %}{% endblock %}
             {% block content %}{% endblock %}
         </div>
     </main>

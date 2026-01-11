@@ -7,6 +7,10 @@ from .models import News
 # from gallery.models import GalleryAlbum  # за related_albums в детайла
 
 
+def news(request):
+    return render(request, "news/news.html")
+
+
 def news_list(request):
     news = News.objects.all()
     paginator = Paginator(news, 6)  # 6 новини на страница

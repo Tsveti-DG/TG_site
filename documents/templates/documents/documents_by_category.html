@@ -1,43 +1,100 @@
 {% extends "core/base.html" %}
 {% load document_tags %}
-
 {% load static %}
+
+{% block page_intro %}
+<style>
+/* =========================
+   Page intro (quiet style)
+   ========================= */
+
+.page-intro {
+    font-size: 15px;              /* по-малък от основния текст */
+    line-height: 1.5;
+    color: #555;                  /* по-тих цвят */
+    margin-bottom: 25px;
+}
+.page-intro a {
+    font-size: 15px;              /* по-малък от основния текст */
+    line-height: 1.5;
+    color: #555;                  /* по-тих цвят */
+    margin-bottom: 25px;
+}
+
+.page-intro {
+    border-left: 3px solid rgba(136, 25, 18, 0.25);
+    padding-left: 15px;
+}
+
+
+/* параграфи в intro */
+.page-intro p {
+    margin: 0 0 10px 0;
+}
+
+/* линкове в intro – по-тихи от основните */
+.page-intro a {
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+/* em / small в intro */
+.page-intro em,
+.page-intro small {
+    color: #666;
+}
+
+/* по желание – HR в intro да е по-близо */
+/* .page-intro hr {
+    margin: 15px 0;
+} */
+
+</style>
+<div class="page-container page-intro">
+
+    <p><em>Документи, свързани с училището за учебната 2025–2026 година.</em></p>
+    <p>
+        <em>
+            <a 
+                class="file-link content-link" target="_blank"
+                href="{% static 'assets/documents/pravantikorup.pdf' %}">
+                Вътрешни правила
+            </a>
+                 за превенция и противодействие на корупция, измами, нередности, злоупотреби, грешки и др. и за установяване и предотвратяване на риска от настъпване на конфликт на интереси в Търговска гимназия „Васил Евстатиев Априлов“.
+                <!-- <small> / 08.10.2025 г.</small> -->
+        </em>
+    </p>
+    <p>
+        <em>
+            <strong>За сигнали:</strong>
+            <br>гр. Червен бряг - 5980, общ. Червен бряг, обл. Плевен, ул. Тома Петков № 27;
+            <br>Тел.: 0659/9 23 18; E-mail: info-1500219@edu.mon.bg;
+        </em>
+    </p>
+
+</div>
+{% endblock %}
+
+{% block page_title %}
+<div class="page-title">
+    <h1>{{ category.name }}</h1>
+</div>
+{% endblock %}
 
 {% block content %}
 <div class="page-container">
-    <p>Документи, свързани с училището за учебната 2025-2026 година.</p>
-    <p>
-        <em>
-        <a 
-            class="file-link content-link" target="_blank"
-            href="{% static 'assets/documents/pravantikorup.pdf' %}">
-            Вътрешни правила за превенция и противодействие на корупция, измами, нередности, злоупотреби, грешки и др.
-        </a>
-         и за установяване и предотвратяване на риска от настъпване на конфликт на интереси в Търговска гимназия „Васил Евстатиев Априлов“.
-        <!-- <small> / 08.10.2025 г.</small> -->
-        </em>
-    </p>
-    <p>
-        <em>
-        <strong>За сигнали:</strong>
-        <br>
-        гр. Червен бряг - 5980, общ. Червен бряг, обл. Плевен, ул. Тома Петков № 27;
-        <br>
-        Тел.: 0659/9 23 18; E-mail: info-1500219@edu.mon.bg;
-        </em>
-    </p>
-
-    <h1>{{ category.name }}</h1>
 
     {% if subcategories %}
         {% if subcategories|length == 1 and subcategories.0.name|lower == category.name|lower %}
             {# Само една подкатегория със същото име като категорията → не показваме h3 #}
             {% show_documents subcategories.0 %}
+            <!-- <hr> -->
         {% else %}
             {# Повече подкатегории или различни имена → нормално показване #}
             {% for sub in subcategories %}
                 <h3>{{ sub.name }}</h3>
                 {% show_documents sub %}
+                <!-- <hr> -->
             {% endfor %}
         {% endif %}
     {% else %}

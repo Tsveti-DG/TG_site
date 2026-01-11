@@ -1,9 +1,16 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>Форми на обучение</h1>
+</div>
+{% endblock %}
+
+
 {% block content %}
 <div class="page-container">
-    <h1>Форми на обучение</h1>
+
     <h3>Дневна форма</h3>
 
     <ul>
@@ -104,5 +111,7 @@
             </a>
         </li>
     </ul>
+    <hr class="hr-end">
+
 </div>
 {% endblock %}

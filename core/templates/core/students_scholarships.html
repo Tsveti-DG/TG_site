@@ -1,15 +1,20 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>Стипендии</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
-    <h1>Стипендии</h1>
 
     <p>
         <a 
             class="file-link content-link" target="_blank"
             href="{% static 'assets/documents/Вътрешни правила стипендии.pdf' %}">
-            Вътрешни правила за получаване на стипендии за 2025/2026 уч.год.
+            Вътрешни правила за получаване на стипендии за учебната 2025/2026 год.
         </a>
         <small> / 24.10.2025 г.</small>
     </p>

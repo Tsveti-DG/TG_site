@@ -1,14 +1,17 @@
 {% extends "core/base.html" %} 
 {% load static %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>Материална база</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
-    <h1>Материална база</h1>
-
     <p>Училището разполага с два компютърни кабинета, кабинет по чужд език, два кабинета за провеждане на УТФ (Учебно-тренировъчни фирми), физкултурен салон.</p>
             
-    <div class="rich-gallery">
-        
+    <div class="rich-gallery">        
         <figure>
             <a href="{% static 'assets/images/base_1.jpg' %}" class="glightbox" data-gallery="base-gallery">
                 <img src="{% static 'assets/images/base_1.jpg' %}" alt="Материална база 1">
@@ -57,21 +60,8 @@
             </a>
             <figcaption></figcaption>
         </figure>
-
     </div>
+    <hr class="hr-end">
 
-
-
-
-    <!-- <div class="rich-page">
-        <img src="../../static/core/images/base_2.jpg" alt="Втора снимка">
-        <img src="{% static 'assets/images/base_1.jpg' %}" alt="Материална база 1">
-        <img src="{% static 'assets/images/base_2.jpg' %}" alt="Материална база 2">
-        <img src="{% static 'assets/images/base_3.jpg' %}" alt="Материална база 3">
-        <img src="{% static 'assets/images/base_4.jpg' %}" alt="Материална база 4">
-        <img src="{% static 'assets/images/base_5.jpg' %}" alt="Материална база 5">
-        <img src="{% static 'assets/images/base_6.jpg' %}" alt="Материална база 6">
-        <img src="{% static 'assets/images/base_7.jpg' %}" alt="Материална база 7">
-    </div> -->
 </div>
 {% endblock %}

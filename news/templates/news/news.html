@@ -1,0 +1,21 @@
+{% extends "core/base.html" %} 
+{% load static %}
+
+{% block page_title %}
+<div class="page-title">
+    <h1>Новини</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    <ul class="link-list">
+        <li><h3><a class="content-link" href="{% url 'news:news_list' %}">Актуални новини</a></h3></li>
+        <li><h3><a class="content-link" href="{% url 'newspaper:newspaper_list' %}">Училищен вестник</a></h3></li>
+        <li><h3><a class="content-link" href="{% url 'news:creativity' %}">Творчество</a></h3></li>
+    </ul>
+    <hr class="hr-end">
+
+</div>
+{% endblock %}

@@ -1,5 +1,12 @@
 {% extends "core/base.html" %}
 {% load static %}
+
+{% block page_title %}
+<div class="page-title">
+    <h1>Профил на купувача</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
     <style>
@@ -26,8 +33,6 @@
 
     </style>
 
-    <h1>Профил на купувача</h1>
-
     <p>
         <a 
             class="file-link content-link" target="_blank"
@@ -36,6 +41,7 @@
         </a>
         <!-- <small> / 08.10.2025 г.</small> -->
     </p>
+    <hr>
 
     <div class="iframe-wrapper">
         <iframe

@@ -1,10 +1,14 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>{{ album.title }}</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
-
-    <h1>{{ album.title }}</h1>
 
     {% if related_news %}
         <div class="album-related-news">

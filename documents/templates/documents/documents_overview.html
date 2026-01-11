@@ -1,10 +1,15 @@
 {% extends "core/base.html" %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>Документи</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
-    <h1>Документи</h1>
 
-    <ul>
+    <ul class="link-list">
         {% for cat in categories %}
             <li>
                 <h3>
@@ -27,34 +32,7 @@
             </li>
         {% endif %}
     </ul>
+    <hr class="hr-end">
+    
 </div>
 {% endblock %}
-
-
-
-
-{% comment %}
-
-{% extends "core/base.html" %}
-
-{% block content %}
-<div class="page-container">
-    <h1>Документи</h1>
-
-    <ul>
-        {% for category in menu_categories %}
-            <li>
-                <h3>
-                    <a class="content-link"
-                       href="{% url 'documents:documents_by_category' category.code %}">
-                        {{ category.name }}
-                    </a>
-                </h3>
-            </li>
-        {% empty %}
-            <li><em>Няма налични категории.</em></li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
-{% endcomment %}

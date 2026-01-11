@@ -1,10 +1,14 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block page_title %}
+<div class="page-title">
+    <h1>Програми и проекти</h1>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="page-container">
-
-    <h1>Програми и проекти</h1>
 
     <h3>Програми и проекти, по които работи училището през учебната 2025/2026 година</h3>
     <ul>
@@ -21,21 +25,19 @@
     </ul>
 
     <div class="rich-gallery">
-
         <figure>
             <a href="{% static 'assets/images/inovations.png' %}" class="glightbox" data-gallery="base-gallery">
-                <img src="{% static 'assets/images/inovations.png' %}" alt="Материална база 6">
+                <img src="{% static 'assets/images/inovations.png' %}" alt="Иновации">
             </a>
             <figcaption></figcaption>
         </figure>
 
         <figure>
             <a href="{% static 'assets/images/stem.png' %}" class="glightbox" data-gallery="base-gallery">
-                <img src="{% static 'assets/images/stem.png' %}" alt="Материална база 7">
+                <img src="{% static 'assets/images/stem.png' %}" alt="STEM">
             </a>
             <figcaption></figcaption>
         </figure>
-
     </div>
 
     <h3>Проектни дейности: проект „Ученически практики“</h3>
@@ -48,40 +50,7 @@
     <ul>
         <li>Екофикейшън и АРК /Йорданова/</li>
     </ul>
-
-    <!-- <p>Примерни снимки</p> -->
-
-    <div class="rich-gallery">
-        
-        <!-- <figure>
-            <a href="{% static 'assets/images/base_1.jpg' %}" class="glightbox" data-gallery="base-gallery">
-                <img src="{% static 'assets/images/base_1.jpg' %}" alt="Материална база 1">
-            </a>
-            <figcaption>Материална база</figcaption>
-        </figure>
-
-        <figure>
-            <a href="{% static 'assets/images/base_2.jpg' %}" class="glightbox" data-gallery="base-gallery">
-                <img src="{% static 'assets/images/base_2.jpg' %}" alt="Материална база 2">
-            </a>
-            <figcaption></figcaption>
-        </figure> -->
-
-    </div>
-
-     
-
- <!-- <p>Полезни линкове: 
-https://upraktiki.mon.bg/ - линк
-www.mon.bg
-смартест - 
-уча се
-канва
-
-   ????????? тук или при ЗА УЧЕНИЦИТЕ?</p>
-
-    <p>рейтингова система на висшите училища???????????????????</p> -->
-
+    <hr class="hr-end">
 
 </div>
 {% endblock %}
