@@ -692,6 +692,89 @@ hr.hr-end {
     margin-bottom: 20px;
 }
 
+/* =========================
+   School anthem
+   ========================= */
+
+/* .school-anthem {
+    margin: 40px 0;
+} */
+
+.anthem-meta {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.anthem-meta p {
+    font-size: 0.95em;
+    color: #555; 
+}
+
+.anthem-meta h3::before,
+.anthem-meta h3::after {
+    content: "♪";
+    font-size: 1.3em;
+    color: var(--burgundy);
+    margin: 0 10px;
+}
+
+.anthem-lyrics {
+    column-count: 3;
+    column-gap: 36px;
+    /* column-fill: auto; */
+
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.anthem-lyrics p {
+    break-inside: avoid;
+    margin: 0 0 18px 0;
+    /* margin-bottom: 18px; */
+    /* text-align: left; */
+}
+
+.anthem-chorus {
+    font-weight: 600;
+    color: var(--burgundy);
+}
+
+.anthem-audio {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.anthem-audio audio {
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+
+    accent-color: var(--burgundy);
+
+    border: 2px solid rgba(136, 25, 18, 0.7);
+    border-radius: 10px;
+    padding: 4px;
+    background-color: #f1f3f4;
+    /* background-color: #f8f4f5; */
+
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .anthem-lyrics {
+        column-count: 2;
+        column-gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .anthem-lyrics {
+        column-count: 1;
+    }
+}
+
+
 
 /* ----------- NEWS LIST STYLES ----------- */
 
