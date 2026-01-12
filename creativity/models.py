@@ -31,7 +31,8 @@ class CreativeWork(models.Model):
         "Водеща снимка",
         upload_to="creativity_images/",
         blank=True,
-        null=True
+        null=True,
+        help_text="По желание"
     )
 
     code = models.SlugField(
