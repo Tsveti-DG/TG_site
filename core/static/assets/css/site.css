@@ -200,6 +200,10 @@ hr.hr-end {
     text-transform: uppercase;
 }
 
+.page-container h2 {
+    text-align: center;
+}
+
 @media (max-width: 420px) {
 
     h1 { font-size: 26px; letter-spacing: 0.2px; }
@@ -846,6 +850,17 @@ hr.hr-end {
     font-size: 16px;
     margin-bottom: 15px;
     color: #444;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 3; /* 👈 брой редове – тук избираш */
+    line-clamp: 3;
+
+    overflow: hidden;
+
+    /* важно – за да се пазят новите редове */
+    white-space: normal;
 }
 
 .read-more {
@@ -883,6 +898,51 @@ hr.hr-end {
     margin: 0 10px;
     font-size: 16px;
 }
+
+/* =========================
+   Creativity cards layout
+   ========================= */
+
+/* Ensure equal height cards in creativity grid */
+.creativity-grid {
+    align-items: stretch;
+}
+
+/* Make cards flex containers */
+.creativity-grid .creativity-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Common content behavior */
+.creativity-grid .news-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text-only cards should fill the available height */
+.creativity-grid .creativity-text-only {
+    flex: 1;
+}
+
+/* Let excerpt take remaining space */
+.creativity-grid .creativity-text-only .news-excerpt {
+    flex: 1;
+}
+
+/* =========================
+   Creativity excerpt limits
+   ========================= */
+
+/* Limit text-only cards to a fixed number of lines */
+.creativity-grid .creativity-text-only .news-excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* number of visible lines */
+    overflow: hidden;
+}
+
 
 
 /* ----------- NEWS DETAIL STYLES ----------- */

@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block page_title %}
+<div class="page-title">
+    <h1>{{ work.title }}</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    {% if work.author %}
+        <p class="news-date">{{ work.author }}</p>
+    {% endif %}
+
+    <p class="news-date">
+        Публикувано на: 
+        {{ work.published_at|date:"d.m.Y" }}
+    </p>
+
+    {# ========== ГАЛЕРИЯ (СНИМКИ) ========== #}
+    {% if work.image or work.gallery_images.exists %}
+        <div class="news-gallery-grid">
+
+            {# Водеща снимка #}
+            {% if work.image %}
+                <a href="{{ work.image.url }}"
+                   class="glightbox"
+                   data-gallery="creativity-{{ work.id }}">
+                    <img src="{{ work.image.url }}"
+                         alt="{{ work.title }}">
+                </a>
+            {% endif %}
+
+            {# Допълнителни снимки #}
+            {% for img in work.gallery_images.all %}
+                <a href="{{ img.image.url }}"
+                   class="glightbox"
+                   data-gallery="creativity-{{ work.id }}"
+                   data-title="{{ img.caption|default:'' }}">
+
+                    <img src="{{ img.image.url }}"
+                         alt="{{ img.caption }}">
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {# ========== ТЕКСТ ========== #}
+    <div class="news-detail-content">
+        {{ work.content|safe }}
+    </div>
+
+    <p class="back-to-news">
+        <a class="read-more" href="{% url 'creativity:creativity_list' %}">
+            ← Обратно към творчеството
+        </a>
+    </p>
+
+</div>
+{% endblock %}

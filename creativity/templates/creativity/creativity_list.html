@@ -1,0 +1,78 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block page_title %}
+<div class="page-title">
+    <h1>Творчество</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    <div class="news-grid creativity-grid">
+        {% for item in works_page %}
+            <div class="news-card creativity-card">
+
+                {% if item.image %}
+                    <!-- Image-based card: show image, title and publish date -->
+                    <a href="{{ item.get_absolute_url }}">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    </a>
+
+                    <div class="news-content">
+                        <h2 class="news-title">
+                            <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                        </h2>
+
+                        <div class="news-date">
+                            {{ item.published_at|date:"d.m.Y" }}
+                        </div>
+                    </div>
+
+                {% else %}
+                    <!-- Text-based card: text fills the card when no image is present -->
+                    <div class="news-content creativity-text-only">
+
+                        <h2 class="news-title">
+                            <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                        </h2>
+
+                        {% if item.author %}
+                            <div class="news-date">
+                                {{ item.author }}
+                            </div>
+                        {% endif %}
+
+                        <div class="news-date">
+                            {{ item.published_at|date:"d.m.Y" }}
+                        </div>
+
+                        <p class="news-excerpt">
+                            {{ item.excerpt|linebreaksbr }}
+                        </p>
+
+                        <a class="read-more" href="{{ item.get_absolute_url }}">
+                            Прочети →
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if works_page.has_previous %}
+            <a href="?page={{ works_page.previous_page_number }}">«</a>
+        {% endif %}
+
+        <span>Страница {{ works_page.number }} от {{ works_page.paginator.num_pages }}</span>
+
+        {% if works_page.has_next %}
+            <a href="?page={{ works_page.next_page_number }}">»</a>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

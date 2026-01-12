@@ -32,7 +32,3 @@ def news_detail(request, code):
     }
 
     return render(request, "news/news_detail.html", context)
-
-
-def creativity(request):
-    return render(request, 'news/creativity.html')

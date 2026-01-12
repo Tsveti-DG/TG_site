@@ -69,6 +69,15 @@ class GalleryAlbum(models.Model):
 
 
 class GalleryImage(models.Model):
+    creative_work = models.ForeignKey(
+        "creativity.CreativeWork",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="gallery_images",
+        verbose_name="Творба"
+    )
+
     album = models.ForeignKey(
         GalleryAlbum,
         on_delete=models.CASCADE,
@@ -104,9 +113,10 @@ class GalleryImage(models.Model):
         return "Снимка (без връзка)"
 
     def clean(self):
-        if not self.album and not self.news:
+        if not self.album and not self.news and not self.creative_work:
             raise ValidationError(
-                "Снимката трябва да е свързана с албум или новина.")
+                "Снимката трябва да е свързана с албум, новина или творба."
+            )
 
 
 class GalleryVideo(models.Model):

@@ -12,4 +12,6 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     path('documents/', include('documents.urls')),
     path('newspaper/', include('newspaper.urls')),
+    path("creativity/", include("creativity.urls")),
+    path("ckeditor5/", include("django_ckeditor_5.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

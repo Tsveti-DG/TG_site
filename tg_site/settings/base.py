@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     "news",
     "gallery",
     "newspaper",
+    "creativity",
+    "django_ckeditor_5",
 ]
 
 MIDDLEWARE = [
@@ -79,3 +81,17 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "toolbar": [
+            "bold", "italic", "underline",
+            "|",
+            "bulletedList", "numberedList",
+            "|",
+            "blockQuote",
+            "|",
+            "undo", "redo",
+        ],
+    }
+}
