@@ -11,8 +11,8 @@ class DocumentInline(admin.TabularInline):
     extra = 1
     fields = ("title", "file", "uploaded_at", "is_archived")
     readonly_fields = ("uploaded_at",)
-    ordering = ("is_archived", "-uploaded_at", "title")
-    show_change_link = True,
+    ordering = ("-uploaded_at", "title")
+    show_change_link = True
 
 
 # =========================
@@ -63,23 +63,38 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "subcategory",
-        "uploaded_at",
+        "category_name",
         "is_archived",
+        "uploaded_at",
         "file",
     )
+
     list_editable = ("is_archived",)
 
     list_filter = (
         "is_archived",
-        "subcategory",
         "subcategory__category",
+        "subcategory",
     )
+
     search_fields = ("title", "description")
 
     ordering = (
         "subcategory__category__order",
+        "subcategory__category__name",
         "subcategory__order",
-        # "is_archived",      # ⬅ първо НЕархивирани
-        "-uploaded_at",     # ⬅ най-новите отгоре
+        "subcategory__name",
+        "-uploaded_at",
         "title",
     )
+
+    date_hierarchy = "uploaded_at"
+
+    # ---------- custom columns ----------
+
+    @admin.display(
+        description="Категория",
+        ordering="subcategory__category__order",
+    )
+    def category_name(self, obj):
+        return obj.subcategory.category.name

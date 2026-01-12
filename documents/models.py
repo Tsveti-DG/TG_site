@@ -66,7 +66,9 @@ class Document(models.Model):
     class Meta:
         ordering = [
             "subcategory__category__order",
+            "subcategory__category__name",
             "subcategory__order",
+            "subcategory__name",
             "-uploaded_at",
             "title",
         ]
