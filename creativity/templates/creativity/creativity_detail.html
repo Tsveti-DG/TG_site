@@ -10,15 +10,6 @@
 {% block content %}
 <div class="page-container">
 
-    {% if work.author %}
-        <p class="news-date">{{ work.author }}</p>
-    {% endif %}
-
-    <p class="news-date">
-        Публикувано на: 
-        {{ work.published_at|date:"d.m.Y" }}
-    </p>
-
     {# ========== ГАЛЕРИЯ (СНИМКИ) ========== #}
     {% if work.image or work.gallery_images.exists %}
         <div class="news-gallery-grid">
@@ -48,9 +39,19 @@
     {% endif %}
 
     {# ========== ТЕКСТ ========== #}
-    <div class="news-detail-content">
+    <div class="news-detail-content creativity-detail">
         {{ work.content|safe }}
     </div>
+
+
+    {% if work.author %}
+        <p class="news-date">{{ work.author }}</p>
+    {% endif %}
+
+    <p class="news-date">
+        Публикувано на: 
+        {{ work.published_at|date:"d.m.Y" }}
+    </p>
 
     <p class="back-to-news">
         <a class="read-more" href="{% url 'creativity:creativity_list' %}">

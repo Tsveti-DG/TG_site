@@ -943,6 +943,43 @@ hr.hr-end {
     overflow: hidden;
 }
 
+/* =========================
+   Creativity poetry spacing
+   ========================= */
+
+/* Reduce vertical spacing between lines in poetry */
+.creativity-detail p {
+    margin-top: 0.2em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    /* margin-left: 50px; */
+}
+
+.creativity-detail {
+    line-height: 1.45;
+    padding-left: 1.5rem;
+}
+
+
+/* =========================
+   Creativity – poetry preview
+   ========================= */
+
+/* Poetry-style typography (TEMP preview) */
+/* .creativity-detail {
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    letter-spacing: 0.01em;
+} */
+
+/* Reduce paragraph spacing for poems */
+/* .creativity-detail p {
+    margin: 0.15em 0;
+    color: #006400;
+} */
+
 
 
 /* ----------- NEWS DETAIL STYLES ----------- */
