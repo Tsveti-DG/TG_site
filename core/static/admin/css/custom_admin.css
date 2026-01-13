@@ -3,6 +3,10 @@ td.field-subcategory {
     white-space: normal;
 }
 
+th.field-title {
+    min-width: 200px;
+}
+
 td.field-is_archived {
     text-align: center;
 }
