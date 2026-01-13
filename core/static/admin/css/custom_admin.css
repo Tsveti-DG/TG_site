@@ -2,7 +2,7 @@
 td.field-subcategory,
 td.field-title {
     white-space: normal;
-    max-width: 260px;
+    max-width: 360px;
 }
 
 td.field-is_archived {
