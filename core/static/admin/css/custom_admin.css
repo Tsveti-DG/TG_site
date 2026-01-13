@@ -1,8 +1,6 @@
-/* Allow wrapping in subcategory column */
-td.field-subcategory,
-td.field-title {
+td.field-subcategory {
+    min-width: 200px;
     white-space: normal;
-    max-width: 360px;
 }
 
 td.field-is_archived {
