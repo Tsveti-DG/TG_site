@@ -90,6 +90,11 @@ class DocumentAdmin(admin.ModelAdmin):
 
     date_hierarchy = "uploaded_at"
 
+    class Media:
+        css = {
+            "all": ("admin/css/custom_admin.css",)
+        }
+
     # ---------- custom columns ----------
 
     @admin.display(

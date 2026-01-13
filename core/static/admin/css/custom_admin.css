@@ -1,0 +1,10 @@
+/* Allow wrapping in subcategory column */
+td.field-subcategory,
+td.field-title {
+    white-space: normal;
+    max-width: 260px;
+}
+
+td.field-is_archived {
+    text-align: center;
+}
